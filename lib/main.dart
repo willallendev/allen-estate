@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart' as Foundation;
 import 'package:flutter/material.dart';
 
 void main() {
-//  runApp(AllenEstateApp());
   runApp(
     DevicePreview(
       usePreferences: true,
