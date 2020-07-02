@@ -1,10 +1,19 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart' as Foundation;
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+//  runApp(AllenEstateApp());
+  runApp(
+    DevicePreview(
+      usePreferences: true,
+      enabled: !Foundation.kReleaseMode,
+      builder: (context) => AllenEstateApp(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
+class AllenEstateApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
