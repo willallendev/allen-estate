@@ -318,7 +318,7 @@ packages:
     source: hosted
     version: "2.1.12"
   injectable:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: injectable
       url: "https://pub.dartlang.org"
