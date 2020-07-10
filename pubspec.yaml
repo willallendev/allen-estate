@@ -30,6 +30,7 @@ dependencies:
   auto_route: ^0.6.1
   # IOC
   get_it: ^4.0.2
+  injectable: ^0.4.0+1
   provider: ^4.1.3
   # Networking
   dio: ^3.0.9
