@@ -5,10 +5,8 @@ class InfoIcon extends StatelessWidget {
   final Widget icon;
 
   InfoIcon({@required this.info, @required this.icon})
-      : assert(
-          info != null,
-          icon != null,
-        );
+      : assert(info != null, '"info" param cannot be null'),
+        assert(icon != null, '"icon" param cannot be null');
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +14,6 @@ class InfoIcon extends StatelessWidget {
     return Container(
       constraints: BoxConstraints(
         maxWidth: 64,
-        maxHeight: 56,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,

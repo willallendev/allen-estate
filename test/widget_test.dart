@@ -8,9 +8,11 @@
 import 'package:flutter_test/flutter_test.dart';
 
 import 'ui/widgets/info_icon.dart';
+import 'ui/widgets/re_info_icons.dart';
 
 void main() {
   infoIconTest();
+  reInfoIconsTest();
 
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
 //    // Build our app and trigger a frame.
