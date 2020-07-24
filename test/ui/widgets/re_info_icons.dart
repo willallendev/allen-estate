@@ -40,10 +40,10 @@ void reInfoIconsTest() {
   final testSubject5 = MaterialApp(
     home: ReInfoIcons(
       sqrSpace: sqrSpace,
-      spaceUnits: 'ft²',
       bedrooms: bedrooms,
       bathrooms: bathrooms,
       parkingSlots: parkingSlots,
+      config: InfoIconsConfig.defaultConfig(sqrSpaceSymbol: 'ft²'),
     ),
   );
 

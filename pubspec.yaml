@@ -39,6 +39,8 @@ dependencies:
   flutter_secure_storage: ^3.3.3
   # Misc
   adobe_xd: ^0.1.4
+  intl: ^0.16.1
+  cached_network_image: ^2.2.0+1
 
 dev_dependencies:
   flutter_test:
