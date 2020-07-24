@@ -6,8 +6,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart' as Foundation;
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 void main() {
+  Intl.defaultLocale = 'en_US';
   setupLocator();
   setupLicenses();
   runApp(
@@ -24,7 +26,7 @@ class AllenEstateApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: appTheme,
+      theme: buildAppTheme(),
       builder: ExtendedNavigator<Router>(router: Router()),
     );
   }
