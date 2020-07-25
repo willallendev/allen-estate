@@ -23,10 +23,11 @@ class ReCard extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     final re = realEstate;
-    return Container(
-      width: 279,
-      child: AspectRatio(
-        aspectRatio: 9 / 16,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 5),
+      child: SizedBox(
+        width: 279, // 9:16 aspect ratio
+        height: 496,
         child: Card(
           clipBehavior: Clip.antiAlias,
           color: theme.cardColor,
