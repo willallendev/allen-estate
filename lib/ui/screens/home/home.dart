@@ -1,27 +1,13 @@
 import 'dart:developer';
 
-import 'package:allenrealestateflutter/core/models/real_estate.dart';
+import 'package:allenrealestateflutter/core/mock/real_estate.dart' as reMock;
 import 'package:allenrealestateflutter/ui/utils/app_bar_generators.dart';
-import 'package:allenrealestateflutter/ui/widgets/cards/re_card/re_card.dart';
+import 'package:allenrealestateflutter/ui/widgets/carousels/re_carousel/re_carousel.dart';
 import 'package:flutter/material.dart';
 
 const tag = 'HomePage';
 
 class HomePage extends StatelessWidget {
-  final RealEstateListItem item = RealEstateListItem(
-    id: 'test-re-1',
-    dealType: 'for rent',
-    type: 'apartment',
-    shortAddress: 'London - Stratford',
-    price: 1260000,
-//    thumbnail: 'https://i.pinimg.com/originals/ba/61/cc/ba61cc38f919bbfb8f7cbac8a6b3a434.jpg',
-    thumbnail: 'https://assets.reapit.net/stp/live/pictures/LKN/16/LKN160069_06.jpg',
-    bathrooms: 4,
-    bedrooms: 3,
-    parkingSlots: 2,
-    sqrSpace: 80,
-  );
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -48,21 +34,7 @@ class HomePage extends StatelessWidget {
                 child: Text('Popular', style: textTheme.headline5.copyWith(color: primaryColor)),
               ),
               Container(height: 16),
-              SizedBox(
-                height: 496,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: <Widget>[
-                    Container(width: 16),
-                    ReCard(realEstate: item),
-                    Container(width: 40),
-                    ReCard(realEstate: item),
-                    Container(width: 40),
-                    ReCard(realEstate: item),
-                    Container(width: 16),
-                  ],
-                ),
-              ),
+              ReCarousel(realEstateList: reMock.listItemList),
               Container(height: 32),
               _buildHPadding(
                 child: Text('Categories', style: textTheme.headline5.copyWith(color: primaryColor)),
