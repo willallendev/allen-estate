@@ -32,4 +32,33 @@ class RealEstateListItem {
         assert((bedrooms != null && bedrooms > 0) || (bedrooms == null)),
         assert((bathrooms != null && bathrooms > 0) || (bathrooms == null)),
         assert((parkingSlots != null && parkingSlots > 0) || (parkingSlots == null));
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RealEstateListItem &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          dealType == other.dealType &&
+          type == other.type &&
+          shortAddress == other.shortAddress &&
+          price == other.price &&
+          thumbnail == other.thumbnail &&
+          sqrSpace == other.sqrSpace &&
+          bedrooms == other.bedrooms &&
+          bathrooms == other.bathrooms &&
+          parkingSlots == other.parkingSlots;
+
+  @override
+  int get hashCode =>
+      id.hashCode ^
+      dealType.hashCode ^
+      type.hashCode ^
+      shortAddress.hashCode ^
+      price.hashCode ^
+      thumbnail.hashCode ^
+      sqrSpace.hashCode ^
+      bedrooms.hashCode ^
+      bathrooms.hashCode ^
+      parkingSlots.hashCode;
 }
