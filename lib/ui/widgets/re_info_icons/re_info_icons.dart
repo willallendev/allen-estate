@@ -36,13 +36,14 @@ class ReInfoIcons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     final c = config;
     return _buildLayout(layout: c.layout, children: <Widget>[
       _buildNullHidder(
         value: sqrSpace,
         child: InfoIcon(
           info: '$sqrSpace${c.sqrSpaceSymbol}',
-          icon: FaIcon(FontAwesomeIcons.ruler, size: c.iconSize),
+          icon: FaIcon(FontAwesomeIcons.ruler, size: c.iconSize, color: textTheme.headline1.color),
           fontSize: c.fontSize,
           textIconSpace: c.textIconSpace,
         ),
@@ -52,7 +53,7 @@ class ReInfoIcons extends StatelessWidget {
         value: bedrooms,
         child: InfoIcon(
           info: '$bedrooms',
-          icon: FaIcon(FontAwesomeIcons.bed, size: c.iconSize),
+          icon: FaIcon(FontAwesomeIcons.bed, size: c.iconSize, color: textTheme.headline1.color),
           fontSize: c.fontSize,
           textIconSpace: c.textIconSpace,
         ),
@@ -62,7 +63,7 @@ class ReInfoIcons extends StatelessWidget {
         value: bathrooms,
         child: InfoIcon(
           info: '$bathrooms',
-          icon: FaIcon(FontAwesomeIcons.shower, size: c.iconSize),
+          icon: FaIcon(FontAwesomeIcons.shower, size: c.iconSize, color: textTheme.headline1.color),
           fontSize: c.fontSize,
           textIconSpace: c.textIconSpace,
         ),
@@ -72,7 +73,7 @@ class ReInfoIcons extends StatelessWidget {
         value: parkingSlots,
         child: InfoIcon(
           info: '$parkingSlots',
-          icon: FaIcon(FontAwesomeIcons.carAlt, size: c.iconSize),
+          icon: FaIcon(FontAwesomeIcons.carAlt, size: c.iconSize, color: textTheme.headline1.color),
           fontSize: c.fontSize,
           textIconSpace: c.textIconSpace,
         ),
