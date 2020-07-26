@@ -9,6 +9,13 @@ import 'package:intl/intl.dart';
 
 class ReCard extends StatelessWidget {
   static const TAG = 'ReCard';
+
+  // 9:16 aspect ratio
+  static double _cardHeight = 496;
+  static double _cardWidth = 279;
+  static double _cardBottomPadding = 5;
+
+  static double height = _cardHeight + _cardBottomPadding;
   final RealEstateListItem realEstate;
   final nFormat = NumberFormat.compactCurrency(decimalDigits: 0, symbol: '\$');
 
@@ -24,10 +31,10 @@ class ReCard extends StatelessWidget {
     final textTheme = theme.textTheme;
     final re = realEstate;
     return Padding(
-      padding: const EdgeInsets.only(bottom: 5),
+      padding: EdgeInsets.only(bottom: _cardBottomPadding),
       child: SizedBox(
-        width: 279, // 9:16 aspect ratio
-        height: 496,
+        width: _cardWidth,
+        height: _cardHeight,
         child: Card(
           clipBehavior: Clip.antiAlias,
           color: theme.cardColor,
