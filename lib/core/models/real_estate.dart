@@ -83,3 +83,25 @@ class RealEstateListItem {
       bathrooms.hashCode ^
       parkingSlots.hashCode;
 }
+
+class RealEstateCategory {
+  final String id;
+  final String name;
+  final String image;
+
+  RealEstateCategory({
+    @required this.id,
+    @required this.name,
+    @required this.image,
+  })  : assert(id != null),
+        assert(name != null),
+        assert(image != null);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RealEstateCategory && runtimeType == other.runtimeType && id == other.id && name == other.name;
+
+  @override
+  int get hashCode => id.hashCode ^ name.hashCode;
+}
