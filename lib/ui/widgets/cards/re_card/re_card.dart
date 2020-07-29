@@ -121,7 +121,7 @@ class ReCard extends StatelessWidget {
 
   Widget _buildDealTypeText(RealEstateListItem re, TextTheme textTheme, ThemeData theme) {
     return Text(
-      re.dealType.toCapitalized(),
+      re.dealType.name.toCapitalized(),
       style: textTheme.overline.copyWith(color: theme.secondaryHeaderColor),
     );
   }

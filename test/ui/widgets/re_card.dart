@@ -14,7 +14,7 @@ extension _StringExtension on String {
 void reCardTest() {
   final RealEstateListItem item = RealEstateListItem(
     id: 'test-re-1',
-    dealType: 'for rent',
+    dealType: ReDealType.forRent,
     type: 'apartment',
     shortAddress: 'London - Stratford',
     price: 1000000,
@@ -34,7 +34,7 @@ void reCardTest() {
     final reInfoIcons = find.byType(ReInfoIcons);
     final image = find.byType(CachedNetworkImage);
 
-    expect(find.text(item.dealType.capitalize()), findsOneWidget);
+    expect(find.text(item.dealType.name.capitalize()), findsOneWidget);
     expect(find.text(item.type.capitalize()), findsOneWidget);
     expect(find.text(item.shortAddress), findsOneWidget);
     expect(image, findsOneWidget);

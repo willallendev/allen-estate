@@ -2,7 +2,7 @@ import 'package:allenrealestateflutter/core/models/real_estate.dart';
 
 final RealEstateListItem listItem1 = RealEstateListItem(
   id: 'test-re-1',
-  dealType: 'for rent',
+  dealType: ReDealType.forRent,
   type: 'apartment',
   shortAddress: 'London - Stratford',
   price: 1260000,
@@ -15,7 +15,7 @@ final RealEstateListItem listItem1 = RealEstateListItem(
 
 final RealEstateListItem listItem2 = RealEstateListItem(
   id: 'test-re-2',
-  dealType: 'for rent',
+  dealType: ReDealType.forRent,
   type: 'apartment',
   shortAddress: 'London - Stratford',
   price: 800000,
@@ -28,7 +28,7 @@ final RealEstateListItem listItem2 = RealEstateListItem(
 
 final RealEstateListItem listItem3 = RealEstateListItem(
   id: 'test-re-3',
-  dealType: 'for rent',
+  dealType: ReDealType.forRent,
   type: 'house',
   shortAddress: 'London - Stratford',
   price: 2260000,
