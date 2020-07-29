@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:allenrealestateflutter/core/mock/real_estate.dart' as reMock;
 import 'package:allenrealestateflutter/ui/utils/app_bar_generators.dart';
 import 'package:allenrealestateflutter/ui/widgets/carousels/re_carousel/re_carousel.dart';
+import 'package:allenrealestateflutter/ui/widgets/carousels/re_category_carousel/re_category_carousel.dart';
 import 'package:flutter/material.dart';
 
 const tag = 'HomePage';
@@ -39,6 +40,8 @@ class HomePage extends StatelessWidget {
               _buildHPadding(
                 child: Text('Categories', style: textTheme.headline5.copyWith(color: primaryColor)),
               ),
+              Container(height: 16),
+              ReCategoryCarousel(),
               Container(height: 16),
             ],
           ),
