@@ -25,12 +25,13 @@ void main() {
 class AllenEstateApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final theme = buildAppTheme();
     // Sets system status bar color tu transparent
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: theme.backgroundColor));
 
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: buildAppTheme(),
+      theme: theme,
       builder: ExtendedNavigator<Router>(router: Router()),
     );
   }
