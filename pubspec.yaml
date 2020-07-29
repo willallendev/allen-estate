@@ -38,7 +38,7 @@ dependencies:
   # Storage
   flutter_secure_storage: ^3.3.3
   # Misc
-  adobe_xd: ^0.1.4
+  adobe_xd: ^1.0.0+1
   intl: ^0.16.1
   cached_network_image: ^2.2.0+1
 
@@ -63,5 +63,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-#  assets:
-#    - google-fonts/
+  assets:
+    - lib/ui/assets/img/house.png
+    - lib/ui/assets/img/farm.png
+    - lib/ui/assets/img/building.png
