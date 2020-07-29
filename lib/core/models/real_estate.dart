@@ -1,8 +1,29 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+
+enum ReDealType {
+  forSale,
+  forRent,
+}
+
+extension toString on ReDealType {
+  // ignore: missing_return
+  String get name {
+    switch (this) {
+      case ReDealType.forSale:
+        return "for sale";
+      case ReDealType.forRent:
+        return "for rent";
+      default:
+        {
+          return "undefined";
+        }
+    }
+  }
+}
 
 class RealEstateListItem {
   final String id;
-  final String dealType; // one of: for rent,for sale
+  final ReDealType dealType; // one of: for rent,for sale
   final String type;
   final String shortAddress;
   final int price;
@@ -61,4 +82,26 @@ class RealEstateListItem {
       bedrooms.hashCode ^
       bathrooms.hashCode ^
       parkingSlots.hashCode;
+}
+
+class RealEstateCategory {
+  final String id;
+  final String name;
+  final String image;
+
+  RealEstateCategory({
+    @required this.id,
+    @required this.name,
+    @required this.image,
+  })  : assert(id != null),
+        assert(name != null),
+        assert(image != null);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RealEstateCategory && runtimeType == other.runtimeType && id == other.id && name == other.name;
+
+  @override
+  int get hashCode => id.hashCode ^ name.hashCode;
 }

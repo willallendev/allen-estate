@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:allenrealestateflutter/core/models/real_estate.dart';
 import 'package:allenrealestateflutter/ui/widgets/re_info_icons/re_info_icons.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -10,20 +8,18 @@ import 'package:intl/intl.dart';
 class ReCard extends StatelessWidget {
   static const TAG = 'ReCard';
 
+  final RealEstateListItem realEstate;
+  final Function(String id) onTap;
+
   // 9:16 aspect ratio
   static double _cardHeight = 496;
   static double _cardWidth = 279;
   static double _cardBottomPadding = 5;
-
   static double height = _cardHeight + _cardBottomPadding;
-  final RealEstateListItem realEstate;
+
   final nFormat = NumberFormat.compactCurrency(decimalDigits: 0, symbol: '\$');
 
-  void _onTap() {
-    log('card on tap', name: TAG);
-  }
-
-  ReCard({this.realEstate});
+  ReCard({this.realEstate, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +39,7 @@ class ReCard extends StatelessWidget {
             borderRadius: BorderRadiusDirectional.circular(16),
           ),
           child: GestureDetector(
-            onTap: _onTap,
+            onTap: () => onTap?.call(re.id),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
@@ -121,7 +117,7 @@ class ReCard extends StatelessWidget {
 
   Widget _buildDealTypeText(RealEstateListItem re, TextTheme textTheme, ThemeData theme) {
     return Text(
-      re.dealType.toCapitalized(),
+      re.dealType.name.toCapitalized(),
       style: textTheme.overline.copyWith(color: theme.secondaryHeaderColor),
     );
   }
