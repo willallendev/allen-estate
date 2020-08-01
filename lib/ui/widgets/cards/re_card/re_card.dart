@@ -1,4 +1,4 @@
-import 'package:allenrealestateflutter/core/models/real_estate.dart';
+import 'package:allenrealestateflutter/core/data_models/real_estate.dart';
 import 'package:allenrealestateflutter/ui/widgets/re_info_icons/re_info_icons.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,4 @@
-import 'package:allenrealestateflutter/core/models/real_estate.dart';
+import 'package:allenrealestateflutter/core/data_models/real_estate.dart';
 
 final RealEstateListItem listItem1 = RealEstateListItem(
   id: 'test-re-1',

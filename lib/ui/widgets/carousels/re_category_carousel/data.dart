@@ -1,4 +1,4 @@
-import 'package:allenrealestateflutter/core/models/real_estate.dart';
+import 'package:allenrealestateflutter/core/data_models/real_estate.dart';
 
 final RealEstateCategory housesCategory =
     RealEstateCategory(id: 'test-cat-1', name: 'Houses', image: 'lib/ui/assets/img/house.png');
