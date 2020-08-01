@@ -36,7 +36,7 @@ class ReCategoryCarousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 120,
+      height: 104,
       child: ListView.builder(
         itemCount: categoryList.length,
         itemBuilder: _cardBuilder,

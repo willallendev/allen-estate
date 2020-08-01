@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
-AppBar generateIdleSearchAppBar({@required BuildContext context, Function onTap}) {
-  final textTheme = Theme.of(context).textTheme;
+AppBar generateIdleSearchAppBar({@required BuildContext context, Function onTap, double elevation}) {
+  final theme = Theme.of(context);
+  final textTheme = theme.textTheme;
   final dimmedFontColor = textTheme.bodyText1.color;
   return AppBar(
+    elevation: elevation ?? 5,
     title: Material(
       clipBehavior: Clip.antiAlias,
       borderRadius: BorderRadius.all(Radius.circular(24)),
-      color: Colors.transparent,
+      color: theme.backgroundColor,
       child: Container(
         height: 48,
         child: InkWell(
