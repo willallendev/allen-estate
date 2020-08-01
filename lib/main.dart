@@ -30,7 +30,7 @@ class AllenEstateApp extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: theme.backgroundColor));
 
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Allen Estate',
       theme: theme,
       builder: ExtendedNavigator<Router>(router: Router()),
     );
