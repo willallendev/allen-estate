@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class BarsElevationViewModel extends ChangeNotifier {
   ScrollController _scrollController;
-  static const double EMPTY_SPACE = 10.0;
+  final double _minOffset = 10.0;
   bool _isAtTop = true;
   bool _isAtBottom = false;
   double _outOfRangeElevation;
@@ -37,7 +37,7 @@ class BarsElevationViewModel extends ChangeNotifier {
       }
     } else {
       //call notifyListeners only when values are about to change
-      if (_scrollController.offset > EMPTY_SPACE && _isAtTop) {
+      if (_scrollController.offset > _minOffset && _isAtTop) {
         //not the top
         _isAtTop = false;
         _topAppBarElevation = _outOfRangeElevation;
@@ -55,7 +55,7 @@ class BarsElevationViewModel extends ChangeNotifier {
       }
     } else {
       //call notifyListeners only when values are about to change
-      if (_scrollController.offset > EMPTY_SPACE && _isAtBottom) {
+      if (_scrollController.offset > _minOffset && _isAtBottom) {
         //not the top
         _isAtBottom = false;
         _bottomAppBarElevation = _outOfRangeElevation;
