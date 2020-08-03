@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:allenrealestateflutter/core/data_models/async_state.dart';
 import 'package:allenrealestateflutter/core/data_models/real_estate.dart';
 import 'package:allenrealestateflutter/ui/utils/app_bar_generators.dart';
@@ -17,8 +15,9 @@ class HomeScreen extends StatelessWidget {
   final AsyncState state;
   final List<RealEstateListItem> reList;
   final List<RealEstateCategory> reCategoryList;
+  final Function onSearch;
 
-  HomeScreen({this.state, @required this.reList, @required this.reCategoryList})
+  HomeScreen({this.state, @required this.reList, @required this.reCategoryList, this.onSearch})
       : assert(reList != null, 'reList param must be provided'),
         assert(reCategoryList != null, 'reCategoryList param must be provided');
 
@@ -33,9 +32,7 @@ class HomeScreen extends StatelessWidget {
       builder: (context, _) => Scaffold(
           backgroundColor: theme.backgroundColor,
           appBar: generateIdleSearchAppBar(
-              context: context,
-              onTap: () => log('on tap', name: '$tag/appBar'),
-              elevation: context.watch<BarsElevationViewModel>().topAppBarElevation),
+              context: context, onTap: onSearch, elevation: context.watch<BarsElevationViewModel>().topAppBarElevation),
           bottomNavigationBar:
               CustomBottomNavigationBar(elevation: context.watch<BarsElevationViewModel>().bottomAppBarElevation),
           body: AsyncStateManager(
