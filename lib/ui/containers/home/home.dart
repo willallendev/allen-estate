@@ -8,7 +8,7 @@ class HomeContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseContainer<HomeViewModel>(
       builder: (BuildContext context, HomeViewModel model, Widget child) {
-        return HomePage(
+        return HomeScreen(
           reCategoryList: model.homeData.data.reCategoryList,
           reList: model.homeData.data.popularReList,
           state: model.homeData?.state,
