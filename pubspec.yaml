@@ -31,7 +31,7 @@ dependencies:
   auto_route: ^0.6.1
   # IOC
   get_it: ^4.0.2
-  injectable: ^0.4.0+1
+  injectable: ^1.0.2
   provider: ^4.3.1
   # Networking
   dio: ^3.0.9
@@ -50,7 +50,7 @@ dev_dependencies:
   # Code generators
   build_runner: ^1.10.0
   auto_route_generator: ^0.6.0
-  injectable_generator: ^0.4.1
+  injectable_generator: ^1.0.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

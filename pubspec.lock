@@ -344,14 +344,14 @@ packages:
       name: injectable
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.0+1"
+    version: "1.0.2"
   injectable_generator:
     dependency: "direct dev"
     description:
       name: injectable_generator
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.1"
+    version: "1.0.3"
   intl:
     dependency: "direct main"
     description:
