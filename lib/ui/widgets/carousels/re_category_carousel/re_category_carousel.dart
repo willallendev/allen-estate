@@ -1,12 +1,14 @@
+import 'package:allenrealestateflutter/core/data_models/real_estate.dart';
 import 'package:allenrealestateflutter/ui/widgets/cards/re_category_card/re_category_card.dart';
-import 'package:allenrealestateflutter/ui/widgets/carousels/re_category_carousel/data.dart';
 import 'package:flutter/material.dart';
 
 class ReCategoryCarousel extends StatelessWidget {
   final double sidePadding;
+  final List<RealEstateCategory> categoryList;
 
-  ReCategoryCarousel({this.sidePadding = 16})
-      : assert(sidePadding != null),
+  ReCategoryCarousel({@required this.categoryList, this.sidePadding = 16})
+      : assert(categoryList != null, 'categoryList param must be provided'),
+        assert(sidePadding != null, 'sidePadding param must be provided'),
         assert(sidePadding.isFinite),
         assert(!sidePadding.isNegative),
         assert(!sidePadding.isNaN);
