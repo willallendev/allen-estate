@@ -11,14 +11,14 @@ import 'package:allenrealestateflutter/ui/widgets/custom_bottom_navigation_bar/c
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-const tag = 'HomePage';
+const tag = 'HomeScreen';
 
-class HomePage extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   final AsyncState state;
   final List<RealEstateListItem> reList;
   final List<RealEstateCategory> reCategoryList;
 
-  HomePage({this.state, @required this.reList, @required this.reCategoryList})
+  HomeScreen({this.state, @required this.reList, @required this.reCategoryList})
       : assert(reList != null, 'reList param must be provided'),
         assert(reCategoryList != null, 'reCategoryList param must be provided');
 
