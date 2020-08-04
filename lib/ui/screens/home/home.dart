@@ -16,9 +16,19 @@ class HomeScreen extends StatelessWidget {
   final List<RealEstateListItem> reList;
   final List<RealEstateCategory> reCategoryList;
   final Function onSearch;
+  final void Function(RealEstateListItem realEstate) onReCardTap;
+  final void Function(RealEstateCategory category) onReCategoryCardTap;
+  final void Function() onPopularTap;
 
-  HomeScreen({this.state, @required this.reList, @required this.reCategoryList, this.onSearch})
-      : assert(reList != null, 'reList param must be provided'),
+  HomeScreen({
+    this.state,
+    @required this.reList,
+    @required this.reCategoryList,
+    this.onSearch,
+    this.onReCardTap,
+    this.onReCategoryCardTap,
+    this.onPopularTap,
+  })  : assert(reList != null, 'reList param must be provided'),
         assert(reCategoryList != null, 'reCategoryList param must be provided');
 
   @override
@@ -48,16 +58,19 @@ class HomeScreen extends StatelessWidget {
                   ),
                   Container(height: 24),
                   _buildHPadding(
-                    child: Text('Popular', style: textTheme.headline5.copyWith(color: primaryColor)),
+                    child: GestureDetector(
+                      onTap: onPopularTap,
+                      child: Text('Popular', style: textTheme.headline5.copyWith(color: primaryColor)),
+                    ),
                   ),
                   Container(height: 16),
-                  ReCarousel(realEstateList: reList),
+                  ReCarousel(realEstateList: reList, onCardTap: onReCardTap),
                   Container(height: 32),
                   _buildHPadding(
                     child: Text('Categories', style: textTheme.headline5.copyWith(color: primaryColor)),
                   ),
                   Container(height: 16),
-                  ReCategoryCarousel(categoryList: reCategoryList),
+                  ReCategoryCarousel(categoryList: reCategoryList, onCardTap: onReCategoryCardTap),
                   Container(height: 16),
                 ],
               ),
