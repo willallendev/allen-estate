@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 
 class ReCarousel extends StatelessWidget {
   final List<RealEstateListItem> realEstateList;
+  final void Function(RealEstateListItem realEstate) onCardTap;
   final double sidePadding;
 
-  ReCarousel({this.realEstateList, this.sidePadding = 16})
+  ReCarousel({this.realEstateList, this.sidePadding = 16, this.onCardTap})
       : assert(realEstateList != null),
         assert(sidePadding != null),
         assert(sidePadding.isFinite),
@@ -14,7 +15,7 @@ class ReCarousel extends StatelessWidget {
         assert(!sidePadding.isNaN);
 
   Widget _cardBuilder(BuildContext context, int index) {
-    Widget cardWidget = ReCard(realEstate: realEstateList[index]);
+    Widget cardWidget = ReCard(realEstate: realEstateList[index], onTap: onCardTap);
     const double gap = 40;
 
     if (realEstateList[index] == realEstateList.first) {
