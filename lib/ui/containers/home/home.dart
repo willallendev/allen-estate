@@ -40,6 +40,10 @@ class HomeContainer extends StatelessWidget {
     }
   }
 
+  void _onPopularNavigate(BuildContext context) {
+    ExtendedNavigator.of(context).push(Routes.rePopularList);
+  }
+
   @override
   Widget build(BuildContext context) {
     return BaseContainer<HomeViewModel>(
@@ -51,6 +55,7 @@ class HomeContainer extends StatelessWidget {
           onSearch: () => _onSearch(context),
           onReCardTap: (realEstate) => _onReCardNavigate(context, realEstate),
           onReCategoryCardTap: (category) => _onReCategoryCardNavigate(context, category),
+          onPopularTap: () => _onPopularNavigate(context),
         );
       },
     );
