@@ -1,5 +1,6 @@
 import 'package:allenrealestateflutter/ui/containers/home/home.dart';
 import 'package:allenrealestateflutter/ui/containers/re_category/re_category.dart';
+import 'package:allenrealestateflutter/ui/containers/re_popular_list/re_popular_list.dart';
 import 'package:allenrealestateflutter/ui/containers/re_search_results/re_search_results.dart';
 import 'package:allenrealestateflutter/ui/containers/re_single/re_single.dart';
 import 'package:auto_route/auto_route_annotations.dart';
@@ -8,9 +9,10 @@ import 'package:auto_route/auto_route_annotations.dart';
   routes: <AutoRoute>[
     // initial route is named "/"
     AdaptiveRoute(page: HomeContainer, initial: true, name: 'home'),
-    AdaptiveRoute(page: ReSearchResultsContainer, name: 'reSearchResults', path: '/real-estate-results'),
-    AdaptiveRoute(page: ReSingleContainer, name: 'reSingle', path: '/real-estate/:id'),
-    AdaptiveRoute(page: ReCategoryContainer, name: 'reCategory', path: '/real-estate/category/:categoryId'),
+    AdaptiveRoute(page: ReSearchResultsContainer, name: 'reSearchResults', path: '/real-estates'),
+    AdaptiveRoute(page: ReSingleContainer, name: 'reSingle', path: '/real-estates/:id'),
+    AdaptiveRoute(page: ReCategoryContainer, name: 'reCategory', path: '/real-estates/categories/:categoryId'),
+    AdaptiveRoute(page: RePopularListContainer, name: 'rePopularList', path: '/real-estates/popular'),
   ],
 )
 class $Router {}
