@@ -10,7 +10,7 @@ import 'package:auto_route/auto_route_annotations.dart';
     // initial route is named "/"
     AdaptiveRoute(page: HomeContainer, initial: true, name: 'home'),
     AdaptiveRoute(page: ReSearchResultsContainer, name: 'reSearchResults', path: '/real-estates'),
-    AdaptiveRoute(page: ReSingleContainer, name: 'reSingle', path: '/real-estates/:id'),
+    AdaptiveRoute(page: ReSingleContainer, name: 'reSingle', path: '/real-estates/single/:id'),
     AdaptiveRoute(page: ReCategoryContainer, name: 'reCategory', path: '/real-estates/categories/:categoryId'),
     AdaptiveRoute(page: RePopularListContainer, name: 'rePopularList', path: '/real-estates/popular'),
   ],
