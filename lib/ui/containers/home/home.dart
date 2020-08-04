@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:allenrealestateflutter/core/data_models/real_estate.dart';
 import 'package:allenrealestateflutter/core/view_models/home_view_model/home_view_model.dart';
 import 'package:allenrealestateflutter/ui/containers/base_container/base_container.dart';
@@ -25,6 +27,16 @@ class HomeContainer extends StatelessWidget {
       ExtendedNavigator.of(context).push(
         Routes.reSingle(id: realEstate.id),
       );
+    } else {
+      log('Error, corrupted item, item.id == null', name: '$tag/_onReCardNavigate');
+    }
+  }
+
+  void _onReCategoryCardNavigate(BuildContext context, RealEstateCategory category) {
+    if (category?.id != null) {
+      ExtendedNavigator.of(context).push(Routes.reCategory(categoryId: category.id));
+    } else {
+      log('Error, corrupted item, item.id == null', name: '$tag/_onReCategoryCardNavigate');
     }
   }
 
@@ -38,6 +50,7 @@ class HomeContainer extends StatelessWidget {
           state: model.homeData?.state,
           onSearch: () => _onSearch(context),
           onReCardTap: (realEstate) => _onReCardNavigate(context, realEstate),
+          onReCategoryCardTap: (category) => _onReCategoryCardNavigate(context, category),
         );
       },
     );
