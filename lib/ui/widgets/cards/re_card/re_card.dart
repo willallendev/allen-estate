@@ -9,7 +9,7 @@ class ReCard extends StatelessWidget {
   static const TAG = 'ReCard';
 
   final RealEstateListItem realEstate;
-  final Function(String id) onTap;
+  final void Function(RealEstateListItem realEstate) onTap;
 
   // 9:16 aspect ratio
   static double _cardHeight = 496;
@@ -39,7 +39,7 @@ class ReCard extends StatelessWidget {
             borderRadius: BorderRadiusDirectional.circular(16),
           ),
           child: GestureDetector(
-            onTap: () => onTap?.call(re.id),
+            onTap: () => onTap?.call(re),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
