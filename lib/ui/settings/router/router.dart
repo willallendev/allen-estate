@@ -1,5 +1,6 @@
 import 'package:allenrealestateflutter/ui/containers/home/home.dart';
 import 'package:allenrealestateflutter/ui/containers/re_search_results/re_search_results.dart';
+import 'package:allenrealestateflutter/ui/containers/re_single/re_single.dart';
 import 'package:auto_route/auto_route_annotations.dart';
 
 @AdaptiveAutoRouter(
@@ -7,6 +8,7 @@ import 'package:auto_route/auto_route_annotations.dart';
     // initial route is named "/"
     AdaptiveRoute(page: HomeContainer, initial: true, name: 'home'),
     AdaptiveRoute(page: ReSearchResultsContainer, name: 'reSearchResults', path: '/real-estate-results'),
+    AdaptiveRoute(page: ReSingleContainer, name: 'reSingle', path: '/real-estate/:id'),
   ],
 )
 class $Router {}
