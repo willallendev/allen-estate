@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class ReCategoryCard extends StatelessWidget {
   final RealEstateCategory category;
-  final Function(String id) onTap;
+  final void Function(RealEstateCategory category) onTap;
 
   ReCategoryCard({this.category, this.onTap}) : assert(category != null);
 
@@ -12,7 +12,7 @@ class ReCategoryCard extends StatelessWidget {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
     return GestureDetector(
-      onTap: () => onTap?.call(category.id),
+      onTap: () => onTap?.call(category),
       child: SizedBox(
         width: 80,
         child: Column(

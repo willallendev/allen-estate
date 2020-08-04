@@ -17,8 +17,15 @@ class HomeScreen extends StatelessWidget {
   final List<RealEstateCategory> reCategoryList;
   final Function onSearch;
   final void Function(RealEstateListItem realEstate) onReCardTap;
+  final void Function(RealEstateCategory category) onReCategoryCardTap;
 
-  HomeScreen({this.state, @required this.reList, @required this.reCategoryList, this.onSearch, this.onReCardTap})
+  HomeScreen(
+      {this.state,
+      @required this.reList,
+      @required this.reCategoryList,
+      this.onSearch,
+      this.onReCardTap,
+      this.onReCategoryCardTap})
       : assert(reList != null, 'reList param must be provided'),
         assert(reCategoryList != null, 'reCategoryList param must be provided');
 
@@ -58,7 +65,7 @@ class HomeScreen extends StatelessWidget {
                     child: Text('Categories', style: textTheme.headline5.copyWith(color: primaryColor)),
                   ),
                   Container(height: 16),
-                  ReCategoryCarousel(categoryList: reCategoryList),
+                  ReCategoryCarousel(categoryList: reCategoryList, onCardTap: onReCategoryCardTap),
                   Container(height: 16),
                 ],
               ),
