@@ -122,6 +122,7 @@ class ReCard extends StatelessWidget {
     );
   }
 
+  // TODO: Refactor to use custom network image
   Widget _buildCoverImage(TextTheme textTheme, ThemeData theme, RealEstateListItem re) {
     return Expanded(
       child: CachedNetworkImage(
