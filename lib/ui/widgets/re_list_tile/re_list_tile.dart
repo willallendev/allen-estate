@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class ReListTile extends StatelessWidget {
+  static const height = 157.0;
   final RealEstateListItem realEstate;
   final void Function(RealEstateListItem) onTap;
   final String sqrSpaceSymbol;
@@ -24,10 +25,10 @@ class ReListTile extends StatelessWidget {
     final re = realEstate;
 
     return InkWell(
-      onTap: () => {},
+      onTap: onTap != null ? () => onTap?.call(re) : null,
       child: Container(
         padding: EdgeInsets.fromLTRB(16, 8, 16, 16),
-        height: 157,
+        height: height,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
