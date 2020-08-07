@@ -71,9 +71,13 @@ class _ReListState extends State<ReList> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemBuilder: _tileBuilder,
-      itemCount: widget.noMore ? widget.realEstateList.length : widget.realEstateList.length + 1,
+    final theme = Theme.of(context);
+    return Theme(
+      data: theme.copyWith(accentColor: theme.backgroundColor),
+      child: ListView.builder(
+        itemBuilder: _tileBuilder,
+        itemCount: widget.noMore ? widget.realEstateList.length : widget.realEstateList.length + 1,
+      ),
     );
   }
 }
