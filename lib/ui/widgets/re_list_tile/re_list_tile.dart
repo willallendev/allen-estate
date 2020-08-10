@@ -41,38 +41,40 @@ class ReListTile extends StatelessWidget {
     );
   }
 
-  Column _buildDetails(RealEstateListItem re, TextTheme textTheme, ThemeData theme) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          re.dealType.name.toCapitalized(),
-          style: textTheme.subtitle2.copyWith(color: theme.secondaryHeaderColor),
-        ),
-        Container(height: 2),
-        Text(
-          re.type.toCapitalized(),
-          style: textTheme.headline5,
-        ),
-        Container(height: 2),
-        Text(
-          re.shortAddress,
-          style: textTheme.headline6,
-          softWrap: false,
-          overflow: TextOverflow.fade,
-        ),
-        Container(height: 4),
-        Text(
-          _getExtraInfo(re),
-          style: textTheme.subtitle2,
-        ),
-        Container(height: 6),
-        Text(
-          _nFormat.format(re.price).replaceAll('K', '.000'),
-          style: textTheme.headline5.copyWith(color: theme.secondaryHeaderColor),
-        ),
-      ],
+  Widget _buildDetails(RealEstateListItem re, TextTheme textTheme, ThemeData theme) {
+    return Expanded(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            re.dealType.name.toCapitalized(),
+            style: textTheme.subtitle2.copyWith(color: theme.secondaryHeaderColor),
+          ),
+          Container(height: 2),
+          Text(
+            re.type.toCapitalized(),
+            style: textTheme.headline5,
+          ),
+          Container(height: 2),
+          Text(
+            re.shortAddress,
+            style: textTheme.headline6,
+            softWrap: false,
+            overflow: TextOverflow.fade,
+          ),
+          Container(height: 4),
+          Text(
+            _getExtraInfo(re),
+            style: textTheme.subtitle2,
+          ),
+          Container(height: 6),
+          Text(
+            _nFormat.format(re.price).replaceAll('K', '.000'),
+            style: textTheme.headline5.copyWith(color: theme.secondaryHeaderColor),
+          ),
+        ],
+      ),
     );
   }
 
