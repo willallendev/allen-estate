@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 
 class ReCategoryCarousel extends StatelessWidget {
   final List<RealEstateCategory> categoryList;
-  final void Function(RealEstateCategory category) onCardTap;
+  final void Function(RealEstateCategory category) onTap;
   final double sidePadding;
 
-  ReCategoryCarousel({@required this.categoryList, this.sidePadding = 16, this.onCardTap})
+  ReCategoryCarousel({@required this.categoryList, this.sidePadding = 16, this.onTap})
       : assert(categoryList != null, 'categoryList param must be provided'),
         assert(sidePadding != null, 'sidePadding param must be provided'),
         assert(sidePadding.isFinite),
@@ -15,7 +15,7 @@ class ReCategoryCarousel extends StatelessWidget {
         assert(!sidePadding.isNaN);
 
   Widget _cardBuilder(BuildContext context, int index) {
-    Widget cardWidget = ReCategoryCard(category: categoryList[index], onTap: onCardTap);
+    Widget cardWidget = ReCategoryCard(category: categoryList[index], onTap: onTap);
     const double gap = 24;
 
     if (categoryList[index] == categoryList.first) {

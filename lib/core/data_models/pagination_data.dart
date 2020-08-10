@@ -1,11 +1,20 @@
 class PaginationData {
-  final int total;
-  final int currentPage;
-  final int lastPage;
-  final int perPage;
+  int total;
+  int currentPage;
+  int lastPage;
+  int perPage;
 
-  const PaginationData(
-      {this.total, this.currentPage, this.lastPage, this.perPage});
+  PaginationData({this.total, this.currentPage = 0, this.lastPage, this.perPage = 10});
+
+  PaginationData.fromInstance(PaginationData pagination) {
+    var i = pagination;
+    PaginationData(
+      currentPage: i.currentPage,
+      perPage: i.perPage,
+      total: i.total,
+      lastPage: i.lastPage,
+    );
+  }
 
   @override
   String toString() {

@@ -11,4 +11,8 @@ class RealEstateRepository {
   Future<AsyncResult<List<RealEstateListItem>>> getPopularRealEstates({page = 0, size = 10}) {
     return webService.getPopularRealEstates(page: page, size: size);
   }
+
+  Future<AsyncResult<List<RealEstateListItem>>> getRealEstatesByQuery({int page = 0, int size = 10, String query}) {
+    return webService.getRealEstatesByQuery(page: page, size: size, query: query);
+  }
 }

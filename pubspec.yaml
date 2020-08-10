@@ -41,6 +41,7 @@ dependencies:
   adobe_xd: ^1.0.0+1
   intl: ^0.16.1
   cached_network_image: ^2.2.0+1
+  flutter_svg: ^0.18.0
 
 dev_dependencies:
   flutter_test:
@@ -67,3 +68,4 @@ flutter:
     - lib/ui/assets/img/house.png
     - lib/ui/assets/img/farm.png
     - lib/ui/assets/img/building.png
+    - lib/ui/assets/icons/ic_filter.svg
