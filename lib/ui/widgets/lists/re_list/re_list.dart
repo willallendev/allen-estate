@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:allenrealestateflutter/core/data_models/real_estate.dart';
 import 'package:allenrealestateflutter/ui/widgets/re_list_tile/re_list_tile.dart';
 import 'package:flutter/material.dart';
@@ -7,12 +5,13 @@ import 'package:flutter/material.dart';
 class ReList extends StatefulWidget {
   final List<RealEstateListItem> realEstateList;
   final void Function(RealEstateListItem realEstate) onTap;
+  final ScrollController controller;
   final double verticalPadding;
   final bool noMore;
   final void Function() onEndReached;
   // List of index that have already called onEndReached
 
-  ReList({this.realEstateList, this.onTap, this.verticalPadding = 8, this.noMore = false, this.onEndReached})
+  ReList({this.realEstateList, this.onTap, this.verticalPadding = 8, this.noMore = false, this.onEndReached, this.controller})
       : assert(realEstateList != null),
         assert(noMore != null),
         assert(verticalPadding != null),
@@ -34,7 +33,6 @@ class _ReListState extends State<ReList> {
     if (index == widget.realEstateList.length - 3 && !_bannedCallers.contains(index)) {
       _bannedCallers.add(index);
       widget.onEndReached?.call();
-      log('end reached. index:$index', name: 're_list');
     }
 
     if (index >= widget.realEstateList.length) {
@@ -75,6 +73,7 @@ class _ReListState extends State<ReList> {
     return Theme(
       data: theme.copyWith(accentColor: theme.backgroundColor),
       child: ListView.builder(
+        controller: widget.controller,
         itemBuilder: _tileBuilder,
         itemCount: widget.noMore ? widget.realEstateList.length : widget.realEstateList.length + 1,
       ),
