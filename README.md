@@ -2,7 +2,9 @@
 
 Real Estate Client App written in Dart/Flutter.
 
-![](https://i.imgur.com/SAYERIX.png)
+![demo gif](https://github.com/willallendev/allen-estate/blob/develop/animation.gif)
+
+![UI Design](https://i.imgur.com/SAYERIX.png)
 
 
 #### ⚠⚠⚠This project has NOT reach version 1.0.0 yet⚠⚠⚠
