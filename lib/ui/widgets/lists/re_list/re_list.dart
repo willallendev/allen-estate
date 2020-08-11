@@ -30,7 +30,7 @@ class _ReListState extends State<ReList> {
     final theme = Theme.of(context);
     final progressIndicatorHeight = 16.0;
 
-    if (index == widget.realEstateList.length - 3 && !_bannedCallers.contains(index)) {
+    if (!widget.noMore && index == widget.realEstateList.length - 3 && !_bannedCallers.contains(index)) {
       _bannedCallers.add(index);
       widget.onEndReached?.call();
     }
