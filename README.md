@@ -59,7 +59,6 @@ The **iu** folder contains all the flutter code, the only folder that depends on
 
 ### Real Estate List Screen
 * Add filters UI and business logic
-* Remove progress indicator on last page
 * Add retry button on page fetching error
 
 ### Real Estate Single Screen
