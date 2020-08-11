@@ -13,25 +13,25 @@ class RealEstateMockService extends RealEstateService {
   final List<Map> mockReList = realEstateList;
 
   @override
-  Future<AsyncResult<List<RealEstateListItem>>> getPopularRealEstates({int page = 0, int size = 10}) async {
+  Future<AsyncResult<List<RealEstateListItem>>> getPopularRealEstates({int page = 1, int size = 10}) async {
     log('Fetching results. page: $page, size: $size', name: '$tag/getPopularRealEstates');
     List<RealEstateListItem> results = mockReList.sublist(50, 55).map((e) => realEstateListItemFromJson(e)).toList();
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(Duration(milliseconds: 450));
     return AsyncResult(data: results);
   }
 
   @override
-  Future<AsyncResult<List<RealEstateListItem>>> getRealEstatesByQuery({int page = 0, int size = 10, String query}) async {
+  Future<AsyncResult<List<RealEstateListItem>>> getRealEstatesByQuery({int page = 1, int size = 10, String query}) async {
     log('Fetching results. page: $page, size: $size, query: $query', name: '$tag/getRealEstatesByQuery');
     List<RealEstateListItem> results =
-        mockReList.sublist(page * size, page * size + size).map((e) => realEstateListItemFromJson(e)).toList();
+        mockReList.sublist((page - 1) * size, (page - 1) * size + size).map((e) => realEstateListItemFromJson(e)).toList();
     PaginationData paginationData = PaginationData(
       total: results.length,
       perPage: size,
       lastPage: (mockReList.length / size).truncate(),
       currentPage: page,
     );
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(Duration(milliseconds: 450));
     return AsyncResult(data: results, pagination: paginationData);
   }
 }
