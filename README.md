@@ -52,9 +52,11 @@ The **iu** folder contains all the flutter code, the only folder that depends on
 
 ## TODO 🛒 
 
+### General
+* Change mock rest client implementation for real one (mock backend is not ready)
+
 ### Home Screen
 * Add pull to refresh
-* Change mock rest client implementation for real one (mock backend is not ready)
 * Add data persistency to improve user experience
 
 ### Real Estate List Screen
