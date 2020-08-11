@@ -26,12 +26,12 @@ class ReSearchResultsViewModel extends BaseViewModel {
 
   Future<AsyncResult<List<RealEstateListItem>>> _getSearchResults() async {
     AsyncResult<List<RealEstateListItem>> asyncResultReResultsList;
-    List<RealEstateListItem> reResultsListData;
     List<RealEstateListItem> currentReList = realEstatesData.data;
 
+    PaginationData pagination = realEstatesData.pagination;
     List<dynamic> results = await Future.wait([
       _realEstateRepo.getRealEstatesByQuery(
-        page: realEstatesData.pagination.currentPage,
+        page: currentReList.length == 0 ? 1 : pagination.currentPage + 1,
         query: query,
       ),
     ]);
@@ -41,16 +41,9 @@ class ReSearchResultsViewModel extends BaseViewModel {
       throw Exception('$tag - Could not get home data: $error');
     }
 
-    reResultsListData = asyncResultReResultsList.data;
-
-    PaginationData newPagination = asyncResultReResultsList.pagination
-      ..currentPage = asyncResultReResultsList.pagination.currentPage < asyncResultReResultsList.pagination.lastPage
-          ? asyncResultReResultsList.pagination.currentPage + 1
-          : asyncResultReResultsList.pagination.lastPage;
-    mapPaginationToState(_realEstatesDataTag, newPagination);
-
     return AsyncResult(
-      data: [...currentReList, ...reResultsListData],
+      data: [...currentReList, ...asyncResultReResultsList.data],
+      pagination: asyncResultReResultsList.pagination,
     );
   }
 }
