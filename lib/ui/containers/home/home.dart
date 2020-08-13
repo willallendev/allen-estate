@@ -49,9 +49,9 @@ class HomeContainer extends StatelessWidget {
     return BaseContainer<HomeViewModel>(
       builder: (BuildContext context, HomeViewModel model, Widget child) {
         return HomeScreen(
-          reCategoryList: model.homeData.data.reCategoryList,
-          reList: model.homeData.data.popularReList,
-          state: model.homeData?.state,
+          reCategoryList: model.mainState.data.reCategoryList,
+          reList: model.mainState.data.popularReList,
+          state: model.mainState?.state,
           onSearch: () => _onSearch(context),
           onReCardTap: (realEstate) => _onReCardNavigate(context, realEstate),
           onReCategoryCardTap: (category) => _onReCategoryCardNavigate(context, category),
