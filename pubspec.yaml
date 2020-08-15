@@ -38,6 +38,7 @@ dependencies:
   # Storage
   flutter_secure_storage: ^3.3.3
   # Widgets
+  mapbox_search: ^2.0.0
   cached_network_image: ^2.2.0+1
   flutter_svg: ^0.18.0
   # Misc
