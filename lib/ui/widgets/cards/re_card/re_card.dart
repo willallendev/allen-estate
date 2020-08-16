@@ -41,7 +41,6 @@ class ReCard extends StatelessWidget {
           child: GestureDetector(
             onTap: () => onTap?.call(re),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 _buildCoverImage(textTheme, theme, re),
                 Container(
@@ -50,9 +49,6 @@ class ReCard extends StatelessWidget {
                     horizontal: 24,
                   ),
                   child: Row(
-//                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Expanded(
                         child: Column(
@@ -68,18 +64,21 @@ class ReCard extends StatelessWidget {
                           ],
                         ),
                       ),
-                      ReInfoIcons(
-                        config: InfoIconsConfig.defaultConfig(
-                          layout: InfoIconsLayout.column,
-                          iconSize: 12,
-                          fontSize: 10,
-                          textIconSpace: 2,
-                          gap: 4,
+                      Container(
+                        height: 119,
+                        child: ReInfoIcons(
+                          config: InfoIconsConfig.defaultConfig(
+                            layout: InfoIconsLayout.column,
+                            iconSize: 12,
+                            fontSize: 10,
+                            textIconSpace: 2,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          ),
+                          sqrSpace: re.sqrSpace,
+                          bedrooms: re.bedrooms,
+                          bathrooms: re.bathrooms,
+                          parkingSlots: re.parkingSlots,
                         ),
-                        sqrSpace: re.sqrSpace,
-                        bedrooms: re.bedrooms,
-                        bathrooms: re.bathrooms,
-                        parkingSlots: re.parkingSlots,
                       ),
                     ],
                   ),
