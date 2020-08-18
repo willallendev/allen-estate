@@ -21,6 +21,7 @@ RealEstate realEstateFromJson(Map json) {
   List<String> images = [json['media']['thumbnail'], ...json['media']['images']];
   return RealEstate(
     id: json['id'],
+    url: json['url'],
     dealType: dealType,
     type: json['type'],
     shortAddress: json['location']['shortAddress'],
