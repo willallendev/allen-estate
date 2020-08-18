@@ -14,9 +14,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
   void _onTap(BuildContext context, int index) {
     if (currentIndex != index) {
       if (index == 0) {
-        ExtendedNavigator.of(context).push(Routes.home);
+        ExtendedNavigator.of(context).replace(Routes.home);
       } else if (index == 1) {
-        ExtendedNavigator.of(context).push(Routes.aboutUs);
+        ExtendedNavigator.of(context).replace(Routes.aboutUs);
       } else {
         Scaffold.of(context).showSnackBar(_buildSnackBar());
       }
