@@ -102,7 +102,7 @@ class ReEstateSingleScreen extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Text('Popular', style: textTheme.headline5.copyWith(color: theme.primaryColor)),
+                        child: Text('Similar real estates', style: textTheme.headline5.copyWith(color: theme.primaryColor)),
                       ),
                       Container(height: 16),
                       ReCarousel(realEstateList: carouselRealEstateList, onTap: (_) => {}),

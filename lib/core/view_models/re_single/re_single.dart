@@ -28,7 +28,7 @@ class ReSingleViewModel extends BaseViewModel {
           AsyncResult<RealEstate> asyncResultRealEstate;
 
           List<dynamic> results = await Future.wait([
-            _realEstateRepo.getPopularRealEstates(),
+            _realEstateRepo.getSimilarRealEstatesById(id: id),
             _realEstateRepo.getRealEstateById(id: id),
           ]);
 
