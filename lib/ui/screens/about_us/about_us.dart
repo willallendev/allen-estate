@@ -12,8 +12,6 @@ class AboutUsScreen extends StatefulWidget {
 
 class _AboutUsScreenState extends State<AboutUsScreen> {
   AsyncState _state = AsyncState.loading;
-  WebViewController _controller;
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
