@@ -42,6 +42,7 @@ dependencies:
   map_launcher: ^0.12.0
   cached_network_image: ^2.2.0+1
   flutter_svg: ^0.18.0
+  webview_flutter: ^0.3.22+1
   # Misc
   path: ^1.7.0
   path_provider: ^1.6.11
