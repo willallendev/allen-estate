@@ -37,11 +37,13 @@ class RealEstate {
   final double long;
   final String street;
   final String city;
-  final int postalCode;
+  final String postalCode;
   final String countryCode;
+  final String url;
 
   RealEstate(
       {this.id,
+      this.url,
       this.description,
       this.dealType,
       this.type,
@@ -61,7 +63,7 @@ class RealEstate {
 
   @override
   String toString() {
-    return 'RealEstate{id: $id, description: $description, dealType: $dealType, type: $type, price: $price, images: $images, sqrSpace: $sqrSpace, bedrooms: $bedrooms, bathrooms: $bathrooms, parkingSlots: $parkingSlots, shortAddress: $shortAddress, lat: $lat, long: $long, street: $street, city: $city, postalCode: $postalCode, countryCode: $countryCode}';
+    return 'RealEstate{id: $id, description: $description, dealType: $dealType, type: $type, price: $price, images: $images, sqrSpace: $sqrSpace, bedrooms: $bedrooms, bathrooms: $bathrooms, parkingSlots: $parkingSlots, shortAddress: $shortAddress, lat: $lat, long: $long, street: $street, city: $city, postalCode: $postalCode, countryCode: $countryCode, url: $url}';
   }
 }
 

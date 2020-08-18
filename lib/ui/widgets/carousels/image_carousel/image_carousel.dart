@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 class ImageCarousel extends StatefulWidget {
   final List<String> images;
+  final void Function(int) onTap;
 
-  ImageCarousel({@required this.images}) : assert(images != null, '[ImageCarousel] - images cannot be null');
+  ImageCarousel({@required this.images, this.onTap}) : assert(images != null, '[ImageCarousel] - images cannot be null');
 
   @override
   State createState() {
@@ -58,7 +59,16 @@ class _ImageCarouselState extends State<ImageCarousel> {
     return PageView(
       onPageChanged: onPageChanged,
       controller: pageController,
-      children: widget.images.map((imageURL) => CustomNetworkImage(imageUrl: imageURL)).toList(),
+      children: widget.images
+          .asMap()
+          .entries
+          .map(
+            (entry) => GestureDetector(
+              onTap: () => widget.onTap?.call(entry.key),
+              child: CustomNetworkImage(imageUrl: entry.value),
+            ),
+          )
+          .toList(),
     );
   }
 

@@ -17,7 +17,7 @@ class ReCard extends StatelessWidget {
   static double _cardBottomPadding = 5;
   static double height = _cardHeight + _cardBottomPadding;
 
-  final nFormat = NumberFormat.compactCurrency(decimalDigits: 0, symbol: '\$');
+  final _nFormat = NumberFormat.compactCurrency(decimalDigits: 0, symbol: '\$');
 
   ReCard({this.realEstate, this.onTap});
 
@@ -41,7 +41,6 @@ class ReCard extends StatelessWidget {
           child: GestureDetector(
             onTap: () => onTap?.call(re),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 _buildCoverImage(textTheme, theme, re),
                 Container(
@@ -50,9 +49,6 @@ class ReCard extends StatelessWidget {
                     horizontal: 24,
                   ),
                   child: Row(
-//                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Expanded(
                         child: Column(
@@ -68,18 +64,21 @@ class ReCard extends StatelessWidget {
                           ],
                         ),
                       ),
-                      ReInfoIcons(
-                        config: InfoIconsConfig.defaultConfig(
-                          layout: InfoIconsLayout.column,
-                          iconSize: 12,
-                          fontSize: 10,
-                          textIconSpace: 2,
-                          gap: 4,
+                      Container(
+                        height: 119,
+                        child: ReInfoIcons(
+                          config: InfoIconsConfig.defaultConfig(
+                            layout: InfoIconsLayout.column,
+                            iconSize: 12,
+                            fontSize: 10,
+                            textIconSpace: 2,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          ),
+                          sqrSpace: re.sqrSpace,
+                          bedrooms: re.bedrooms,
+                          bathrooms: re.bathrooms,
+                          parkingSlots: re.parkingSlots,
                         ),
-                        sqrSpace: re.sqrSpace,
-                        bedrooms: re.bedrooms,
-                        bathrooms: re.bathrooms,
-                        parkingSlots: re.parkingSlots,
                       ),
                     ],
                   ),
@@ -94,7 +93,7 @@ class ReCard extends StatelessWidget {
 
   Widget _buildPriceText(RealEstateListItem re, TextTheme textTheme, ThemeData theme) {
     return Text(
-      nFormat.format(re.price).replaceAll('K', '.000'),
+      _nFormat.format(re.price).replaceAll('K', '.000'),
       style: textTheme.headline4.copyWith(color: theme.secondaryHeaderColor),
     );
   }

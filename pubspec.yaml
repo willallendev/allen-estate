@@ -43,6 +43,10 @@ dependencies:
   cached_network_image: ^2.2.0+1
   flutter_svg: ^0.18.0
   # Misc
+  path: ^1.7.0
+  path_provider: ^1.6.11
+  flutter_cache_manager: ^1.4.1
+  esys_flutter_share: ^1.0.2
   adobe_xd: ^1.0.0+1
   intl: ^0.16.1
 
