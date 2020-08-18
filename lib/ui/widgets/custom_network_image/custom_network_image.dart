@@ -5,8 +5,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class CustomNetworkImage extends StatelessWidget {
   final String imageUrl;
   final TextStyle textStyle;
+  final BoxFit fit;
 
-  CustomNetworkImage({@required this.imageUrl, this.textStyle});
+  CustomNetworkImage({@required this.imageUrl, this.textStyle, this.fit = BoxFit.cover});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class CustomNetworkImage extends StatelessWidget {
     final textTheme = theme.textTheme;
 
     return CachedNetworkImage(
-      fit: BoxFit.cover,
+      fit: fit,
       errorWidget: (context, url, error) => Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
