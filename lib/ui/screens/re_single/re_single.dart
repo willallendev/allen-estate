@@ -14,12 +14,16 @@ class ReEstateSingleScreen extends StatelessWidget {
   final AsyncState state;
   final RealEstate realEstate;
   final List<RealEstateListItem> carouselRealEstateList;
+  final void Function() onNavigateToDescription;
+  final void Function(int) onNavigateToGallery;
   final _nFormat = NumberFormat.currency(decimalDigits: 0, symbol: '\$');
 
   ReEstateSingleScreen({
     this.state,
     this.realEstate,
     this.carouselRealEstateList,
+    this.onNavigateToDescription,
+    this.onNavigateToGallery,
   });
 
   @override
@@ -81,7 +85,7 @@ class ReEstateSingleScreen extends StatelessWidget {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-                        child: DescriptionPreview(text: re.description),
+                        child: DescriptionPreview(text: re.description, onTap: onNavigateToDescription),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -131,6 +135,7 @@ class ReEstateSingleScreen extends StatelessWidget {
       expandedHeight: screenWidth / 1.3,
       flexibleSpace: FlexibleSpaceBar(
         background: ImageCarousel(
+          onTap: onNavigateToGallery,
           images: realEstate.images,
         ),
       ),
