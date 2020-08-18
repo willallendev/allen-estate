@@ -20,8 +20,9 @@ class ReSingleContainer extends StatelessWidget {
       },
       builder: (BuildContext context, ReSingleViewModel model, Widget child) {
         return ReEstateSingleScreen(
-          realEstate: model.mainState.data.realEstate,
-          carouselRealEstateList: model.mainState.data.carouselData,
+          state: model.mainState.state,
+          realEstate: model.mainState.data?.realEstate,
+          carouselRealEstateList: model.mainState.data?.carouselData,
         );
       },
     );
