@@ -17,7 +17,7 @@ class ReCard extends StatelessWidget {
   static double _cardBottomPadding = 5;
   static double height = _cardHeight + _cardBottomPadding;
 
-  final nFormat = NumberFormat.compactCurrency(decimalDigits: 0, symbol: '\$');
+  final _nFormat = NumberFormat.compactCurrency(decimalDigits: 0, symbol: '\$');
 
   ReCard({this.realEstate, this.onTap});
 
@@ -93,7 +93,7 @@ class ReCard extends StatelessWidget {
 
   Widget _buildPriceText(RealEstateListItem re, TextTheme textTheme, ThemeData theme) {
     return Text(
-      nFormat.format(re.price).replaceAll('K', '.000'),
+      _nFormat.format(re.price).replaceAll('K', '.000'),
       style: textTheme.headline4.copyWith(color: theme.secondaryHeaderColor),
     );
   }
