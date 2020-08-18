@@ -5,6 +5,7 @@ import 'package:allenrealestateflutter/ui/screens/re_single/re_single.dart';
 import 'package:allenrealestateflutter/ui/settings/router/router.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_route/auto_route_annotations.dart';
+import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:flutter/material.dart';
 
 class ReSingleContainer extends StatelessWidget {
@@ -35,6 +36,14 @@ class ReSingleContainer extends StatelessWidget {
     );
   }
 
+  void _onShareAction(RealEstate realEstate) {
+    Share.text(
+      'Share Real Estate URL',
+      'Check out this Real Estate from Allen Real Estates! \n\n${realEstate.url}',
+      'text/plain',
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BaseContainer(
@@ -48,6 +57,7 @@ class ReSingleContainer extends StatelessWidget {
           carouselRealEstateList: model.mainState.data?.carouselData,
           onNavigateToDescription: () => _onNavigateToDescription(context, model.mainState.data?.realEstate),
           onNavigateToGallery: (index) => _onNavigateToGallery(context, model.mainState.data?.realEstate, index),
+          onShareAction: () => _onShareAction(model.mainState.data?.realEstate),
         );
       },
     );

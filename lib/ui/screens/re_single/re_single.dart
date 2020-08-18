@@ -6,7 +6,6 @@ import 'package:allenrealestateflutter/ui/widgets/carousels/re_carousel/re_carou
 import 'package:allenrealestateflutter/ui/widgets/description_preview/description_preview.dart';
 import 'package:allenrealestateflutter/ui/widgets/info_map/info_map.dart';
 import 'package:allenrealestateflutter/ui/widgets/re_info_icons/re_info_icons.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -15,6 +14,7 @@ class ReEstateSingleScreen extends StatelessWidget {
   final RealEstate realEstate;
   final List<RealEstateListItem> carouselRealEstateList;
   final void Function() onNavigateToDescription;
+  final void Function() onShareAction;
   final void Function(int) onNavigateToGallery;
   final _nFormat = NumberFormat.currency(decimalDigits: 0, symbol: '\$');
 
@@ -24,6 +24,7 @@ class ReEstateSingleScreen extends StatelessWidget {
     this.carouselRealEstateList,
     this.onNavigateToDescription,
     this.onNavigateToGallery,
+    this.onShareAction,
   });
 
   @override
@@ -126,7 +127,7 @@ class ReEstateSingleScreen extends StatelessWidget {
         IconButton(
           splashRadius: 24,
           icon: Icon(Icons.share),
-          onPressed: () => {},
+          onPressed: onShareAction,
         ),
       ],
       backgroundColor: Colors.white,
