@@ -13,6 +13,7 @@ class ReEstateSingleScreen extends StatelessWidget {
   final AsyncState state;
   final RealEstate realEstate;
   final List<RealEstateListItem> carouselRealEstateList;
+  final void Function(RealEstateListItem realEstate) onReCardTap;
   final void Function() onNavigateToDescription;
   final void Function() onShareAction;
   final void Function(int) onNavigateToGallery;
@@ -25,6 +26,7 @@ class ReEstateSingleScreen extends StatelessWidget {
     this.onNavigateToDescription,
     this.onNavigateToGallery,
     this.onShareAction,
+    this.onReCardTap,
   });
 
   @override
@@ -105,7 +107,7 @@ class ReEstateSingleScreen extends StatelessWidget {
                         child: Text('Similar real estates', style: textTheme.headline5.copyWith(color: theme.primaryColor)),
                       ),
                       Container(height: 16),
-                      ReCarousel(realEstateList: carouselRealEstateList, onTap: (_) => {}),
+                      ReCarousel(realEstateList: carouselRealEstateList, onTap: onReCardTap),
                       Container(height: 24),
                     ]))
                   ],
