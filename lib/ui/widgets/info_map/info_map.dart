@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'file:///D:/work-space/showcase/flutter/allen-real-estate/repos/allen_estate/lib/ui/widgets/animations/explicit_tween_animation_builder.dart';
+import 'package:allenrealestateflutter/ui/widgets/animations/explicit_tween_animation_builder.dart';
 import 'package:allenrealestateflutter/ui/widgets/custom_network_image/custom_network_image.dart';
 import 'package:allenrealestateflutter/ui/widgets/info_map/config.secret.dart' as secret;
 import 'package:flutter/cupertino.dart';
