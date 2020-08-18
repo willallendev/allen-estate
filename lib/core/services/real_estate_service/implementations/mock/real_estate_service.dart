@@ -34,6 +34,18 @@ class RealEstateMockService extends RealEstateService {
     await Future.delayed(Duration(milliseconds: 450));
     return AsyncResult(data: results, pagination: paginationData);
   }
+
+  @override
+  Future<AsyncResult<RealEstate>> getRealEstateById({String id}) async {
+    log('Fetching results. id: $id', name: '$tag/getRealEstateById');
+    List<RealEstate> data = mockReList.map((e) => realEstateFromJson(e)).toList();
+    RealEstate results = data.firstWhere((RealEstate element) => element.id == id, orElse: null);
+    if (results == null) {
+      throw Exception('Could not find requested real estate');
+    }
+    await Future.delayed(Duration(milliseconds: 450));
+    return AsyncResult(data: results);
+  }
 }
 
 RealEstateListItem realEstateListItemFromJson(Map json) {
@@ -49,5 +61,29 @@ RealEstateListItem realEstateListItemFromJson(Map json) {
     bedrooms: json['bedrooms'],
     sqrSpace: json['sqrSpace'],
     thumbnail: json['media']['thumbnail'],
+  );
+}
+
+RealEstate realEstateFromJson(Map json) {
+  ReDealType dealType = json['dealType'] == 'for sale' ? ReDealType.forSale : ReDealType.forRent;
+  List<String> images = [json['media']['thumbnail'], ...json['media']['images']];
+  return RealEstate(
+    id: json['id'],
+    dealType: dealType,
+    type: json['type'],
+    shortAddress: json['location']['shortAddress'],
+    price: json['price'],
+    parkingSlots: json['parkingSlots'],
+    bathrooms: json['bathrooms'],
+    bedrooms: json['bedrooms'],
+    sqrSpace: json['sqrSpace'],
+    images: images,
+    city: json['location']['city'],
+    countryCode: json['location']['countryCode'],
+    postalCode: json['location']['postalCode'],
+    lat: json['location']['lat'],
+    long: json['location']['long'],
+    street: json['location']['street'],
+    description: json['description'],
   );
 }

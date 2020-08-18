@@ -15,4 +15,8 @@ class RealEstateRepository {
   Future<AsyncResult<List<RealEstateListItem>>> getRealEstatesByQuery({int page = 0, int size = 10, String query}) {
     return webService.getRealEstatesByQuery(page: page, size: size, query: query);
   }
+
+  Future<AsyncResult<RealEstate>> getRealEstateById({String id}) {
+    return webService.getRealEstateById(id: id);
+  }
 }
