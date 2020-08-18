@@ -2,12 +2,15 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'cache_managers.dart';
+
 class CustomNetworkImage extends StatelessWidget {
   final String imageUrl;
   final TextStyle textStyle;
   final BoxFit fit;
+  final Color backgroundColor;
 
-  CustomNetworkImage({@required this.imageUrl, this.textStyle, this.fit = BoxFit.cover});
+  CustomNetworkImage({@required this.imageUrl, this.textStyle, this.fit = BoxFit.cover, this.backgroundColor});
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +29,17 @@ class CustomNetworkImage extends StatelessWidget {
           ],
         ),
       ),
-      placeholder: (context, url) => Center(
-        child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(theme.primaryColor),
+      progressIndicatorBuilder: (context, url, download) => Container(
+        color: backgroundColor,
+        child: Center(
+          child: CircularProgressIndicator(
+            value: download.progress,
+            valueColor: AlwaysStoppedAnimation<Color>(theme.primaryColor),
+          ),
         ),
       ),
       imageUrl: imageUrl,
+      cacheManager: TransitoryCacheManager(),
     );
   }
 }
