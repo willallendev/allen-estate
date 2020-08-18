@@ -43,8 +43,10 @@ class HomeScreen extends StatelessWidget {
           backgroundColor: theme.backgroundColor,
           appBar: generateIdleSearchAppBar(
               context: context, onTap: onSearch, elevation: context.watch<BarsElevationViewModel>().topAppBarElevation),
-          bottomNavigationBar:
-              CustomBottomNavigationBar(elevation: context.watch<BarsElevationViewModel>().bottomAppBarElevation),
+          bottomNavigationBar: CustomBottomNavigationBar(
+            elevation: context.watch<BarsElevationViewModel>().bottomAppBarElevation,
+            currentIndex: 0,
+          ),
           body: AsyncStateManager(
             state: state,
             child: Theme(

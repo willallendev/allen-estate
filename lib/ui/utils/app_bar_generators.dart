@@ -67,3 +67,33 @@ AppBar generateResultsSearchAppBar(
     ),
   );
 }
+
+AppBar generateSimpleAppBar({
+  @required BuildContext context,
+  String title,
+  double elevation,
+  Color backgroundColor,
+  TextStyle textStyle,
+  IconThemeData iconTheme,
+  double titleSpacing = 16,
+}) {
+  final theme = Theme.of(context);
+  final _textTheme = theme.textTheme;
+  final _iconTheme = theme.iconTheme;
+
+  return AppBar(
+    titleSpacing: titleSpacing,
+    iconTheme: iconTheme ?? _iconTheme,
+    backgroundColor: backgroundColor ?? theme.backgroundColor,
+    title: Text(
+      title != null ? title.toCapitalized() : title,
+      style: textStyle ?? _textTheme.caption,
+      overflow: TextOverflow.fade,
+    ),
+    automaticallyImplyLeading: true,
+  );
+}
+
+extension _CapExtension on String {
+  String toCapitalized() => '${this[0].toUpperCase()}${this.substring(1)}';
+}

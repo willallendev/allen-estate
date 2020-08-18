@@ -21,6 +21,52 @@ extension toString on ReDealType {
   }
 }
 
+class RealEstate {
+  final String id;
+  final String description;
+  final ReDealType dealType; // one of: for rent,for sale
+  final String type;
+  final int price;
+  final List<String> images;
+  final int sqrSpace;
+  final int bedrooms;
+  final int bathrooms;
+  final int parkingSlots;
+  final String shortAddress;
+  final double lat;
+  final double long;
+  final String street;
+  final String city;
+  final String postalCode;
+  final String countryCode;
+  final String url;
+
+  RealEstate(
+      {this.id,
+      this.url,
+      this.description,
+      this.dealType,
+      this.type,
+      this.price,
+      this.images,
+      this.sqrSpace,
+      this.bedrooms,
+      this.bathrooms,
+      this.parkingSlots,
+      this.shortAddress,
+      this.lat,
+      this.long,
+      this.street,
+      this.city,
+      this.postalCode,
+      this.countryCode});
+
+  @override
+  String toString() {
+    return 'RealEstate{id: $id, description: $description, dealType: $dealType, type: $type, price: $price, images: $images, sqrSpace: $sqrSpace, bedrooms: $bedrooms, bathrooms: $bathrooms, parkingSlots: $parkingSlots, shortAddress: $shortAddress, lat: $lat, long: $long, street: $street, city: $city, postalCode: $postalCode, countryCode: $countryCode, url: $url}';
+  }
+}
+
 class RealEstateListItem {
   final String id;
   final ReDealType dealType; // one of: for rent,for sale

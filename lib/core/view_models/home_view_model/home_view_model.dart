@@ -9,18 +9,19 @@ import 'package:injectable/injectable.dart';
 @injectable
 class HomeViewModel extends BaseViewModel {
   static const tag = 'HomeViewModel';
+  static const _mainStateTag = 'main';
   RealEstateRepository _realEstateRepo = locator<RealEstateRepository>();
   RealEstateCategoryRepository _realEstateCategoryRepo = locator<RealEstateCategoryRepository>();
 
-  ViewModelStatePiece<HomeData> get homeData => state['main'];
+  ViewModelStatePiece<HomeData> get mainState => state[_mainStateTag];
 
   HomeViewModel() {
-    this.createStatePiece<HomeData>('main', data: HomeData(popularReList: [], reCategoryList: []));
+    this.createStatePiece<HomeData>(_mainStateTag, data: HomeData(popularReList: [], reCategoryList: []));
     init();
   }
 
   void init() {
-    this.mapFutureResultToState<HomeData>(key: 'main', resultGenerator: _getHomeData);
+    this.mapFutureResultToState<HomeData>(key: _mainStateTag, resultGenerator: _getHomeData);
   }
 
   Future<AsyncResult<HomeData>> _getHomeData() async {

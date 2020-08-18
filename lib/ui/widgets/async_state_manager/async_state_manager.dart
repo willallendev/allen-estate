@@ -16,7 +16,6 @@ class AsyncStateManager extends StatelessWidget {
     switch (state) {
       case AsyncState.initial:
         return loading ?? _buildLoadingContent(context);
-        break;
       case AsyncState.loading:
         return loading ?? _buildLoadingContent(context);
       case AsyncState.error:
