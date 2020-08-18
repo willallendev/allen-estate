@@ -75,13 +75,14 @@ AppBar generateSimpleAppBar({
   Color backgroundColor,
   TextStyle textStyle,
   IconThemeData iconTheme,
+  double titleSpacing = 16,
 }) {
   final theme = Theme.of(context);
   final _textTheme = theme.textTheme;
   final _iconTheme = theme.iconTheme;
 
   return AppBar(
-    titleSpacing: 0,
+    titleSpacing: titleSpacing,
     iconTheme: iconTheme ?? _iconTheme,
     backgroundColor: backgroundColor ?? theme.backgroundColor,
     title: Text(
