@@ -37,7 +37,7 @@ class RealEstate {
   final double long;
   final String street;
   final String city;
-  final int postalCode;
+  final String postalCode;
   final String countryCode;
 
   RealEstate(
