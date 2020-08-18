@@ -1,14 +1,25 @@
+import 'package:allenrealestateflutter/ui/settings/router/router.gr.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+// TODO: this components knows too much, refactor to make it dumb
 class CustomBottomNavigationBar extends StatelessWidget {
+  static const tag = 'CustomBottomNavigationBar';
   final double elevation;
+  final int currentIndex;
 
-  CustomBottomNavigationBar({this.elevation});
+  CustomBottomNavigationBar({this.elevation, this.currentIndex});
 
   void _onTap(BuildContext context, int index) {
-    if (index > 0) {
-      Scaffold.of(context).showSnackBar(_buildSnackBar());
+    if (currentIndex != index) {
+      if (index == 0) {
+        ExtendedNavigator.of(context).push(Routes.home);
+      } else if (index == 1) {
+        ExtendedNavigator.of(context).push(Routes.aboutUs);
+      } else {
+        Scaffold.of(context).showSnackBar(_buildSnackBar());
+      }
     }
   }
 
@@ -17,6 +28,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
     final theme = Theme.of(context);
     return BottomNavigationBar(
       elevation: elevation ?? 5,
+      currentIndex: currentIndex,
       backgroundColor: theme.backgroundColor,
       selectedItemColor: theme.primaryColor,
       unselectedItemColor: theme.textTheme.bodyText1.color,
