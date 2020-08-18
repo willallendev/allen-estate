@@ -62,15 +62,21 @@ The **iu** folder contains all the flutter code, the only folder that depends on
 * Change mock rest client implementation for real one (mock backend is not ready)
 
 ### Home Screen
+* Comment out unimplemented features entry points
 * Add pull to refresh
 * Add data persistency to improve user experience
 
 ### Real Estate List Screen
 * Add filters UI and business logic
 * Add retry button on page fetching error
+* Manege initial loading state
 
 ### Real Estate Single Screen
-* General UI and business logic
+* Fix app bar not showing when fetching data from server fails
+* Add feature to share images with watermark thought native interfaces
+
+### Real Estate Single Screen
+* Add feature to share images with watermark thought native interfaces 
 
 ****
 ##### Note for myself: please add testing for your own good 😞😩
