@@ -134,9 +134,26 @@ class ReEstateSingleScreen extends StatelessWidget {
       automaticallyImplyLeading: true,
       expandedHeight: screenWidth / 1.3,
       flexibleSpace: FlexibleSpaceBar(
-        background: ImageCarousel(
-          onTap: onNavigateToGallery,
-          images: realEstate.images,
+        background: Stack(
+          fit: StackFit.expand,
+          children: [
+            ImageCarousel(
+              onTap: onNavigateToGallery,
+              images: realEstate.images,
+            ),
+            IgnorePointer(
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.white.withOpacity(.5), Colors.transparent],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    stops: [0, 0.65],
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
