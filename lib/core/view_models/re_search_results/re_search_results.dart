@@ -36,7 +36,7 @@ class ReSearchResultsViewModel extends BaseViewModel {
       ),
     ]);
     try {
-      asyncResultReResultsList = (results[0] as AsyncResult<List<RealEstateListItem>>);
+      asyncResultReResultsList = results[0] as AsyncResult<List<RealEstateListItem>>;
     } catch (error) {
       throw Exception('$tag - Could not get home data: $error');
     }
