@@ -19,6 +19,7 @@ class DescriptionSingleScreen extends StatelessWidget {
       create: (_) => BarsElevationViewModel(),
       builder: (context, _) => Scaffold(
         appBar: generateSimpleAppBar(
+          titleSpacing: 0,
           title: appBarTitle,
           context: context,
           elevation: context.watch<BarsElevationViewModel>().topAppBarElevation,

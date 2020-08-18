@@ -64,6 +64,7 @@ class _GallerySingleScreenState extends State<GallerySingleScreen> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: generateSimpleAppBar(
+          titleSpacing: 0,
           iconTheme: iconTheme.copyWith(color: _fontColor),
           textStyle: textTheme.caption.copyWith(color: _fontColor),
           context: context,
