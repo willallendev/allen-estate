@@ -41,7 +41,7 @@ class HomeContainer extends StatelessWidget {
   }
 
   void _onPopularNavigate(BuildContext context) {
-    ExtendedNavigator.of(context).push(Routes.rePopularList);
+//    ExtendedNavigator.of(context).push(Routes.rePopularList);
   }
 
   @override
