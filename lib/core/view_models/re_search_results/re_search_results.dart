@@ -8,27 +8,30 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class ReSearchResultsViewModel extends BaseViewModel {
-  static const tag = 'HomeViewModel';
-  static const _realEstatesDataTag = 'reList';
+  static const tag = 'ReSearchResultsViewModel';
+  static const _mainStateTag = 'main';
   RealEstateRepository _realEstateRepo = locator<RealEstateRepository>();
   String query;
 
-  ViewModelStatePiece<List<RealEstateListItem>> get realEstatesData => state[_realEstatesDataTag];
+  ViewModelStatePiece<List<RealEstateListItem>> get mainState => state[_mainStateTag];
 
   ReSearchResultsViewModel() {
-    this.createStatePiece<List<RealEstateListItem>>(_realEstatesDataTag,
-        data: <RealEstateListItem>[], pagination: PaginationData());
+    this.createStatePiece<List<RealEstateListItem>>(
+      _mainStateTag,
+      data: <RealEstateListItem>[],
+      pagination: PaginationData(),
+    );
   }
 
   void init() {
-    this.mapFutureResultToState<List<RealEstateListItem>>(key: _realEstatesDataTag, resultGenerator: () => _getSearchResults());
+    this.mapFutureResultToState<List<RealEstateListItem>>(key: _mainStateTag, resultGenerator: () => _getSearchResults());
   }
 
   Future<AsyncResult<List<RealEstateListItem>>> _getSearchResults() async {
     AsyncResult<List<RealEstateListItem>> asyncResultReResultsList;
-    List<RealEstateListItem> currentReList = realEstatesData.data;
+    List<RealEstateListItem> currentReList = mainState.data;
 
-    PaginationData pagination = realEstatesData.pagination;
+    PaginationData pagination = mainState.pagination;
     List<dynamic> results = await Future.wait([
       _realEstateRepo.getRealEstatesByQuery(
         page: currentReList.length == 0 ? 1 : pagination.currentPage + 1,
@@ -38,7 +41,7 @@ class ReSearchResultsViewModel extends BaseViewModel {
     try {
       asyncResultReResultsList = results[0] as AsyncResult<List<RealEstateListItem>>;
     } catch (error) {
-      throw Exception('$tag - Could not get home data: $error');
+      throw Exception('$tag - Could not get search results data: $error');
     }
 
     return AsyncResult(

@@ -47,12 +47,12 @@ class ReSearchResultsContainer extends StatelessWidget {
         model.init();
       },
       builder: (BuildContext context, ReSearchResultsViewModel model, Widget child) {
-        PaginationData pagination = model.realEstatesData.pagination;
+        PaginationData pagination = model.mainState.pagination;
         return ReResultsListScreen(
           title: query?.trim(),
           onSearch: () => _onSearch(context),
           noMore: pagination.currentPage == pagination.lastPage,
-          reList: model.realEstatesData.data,
+          reList: model.mainState.data,
           onFilter: () => log('onFilter', name: tag),
           onEndReached: () => model.init(),
           onReTap: (realEstate) => _onReNavigate(context, realEstate),
