@@ -30,7 +30,7 @@ class _WhereToFindUsScreenState extends State<WhereToFindUsScreen> {
 
     return Scaffold(
       backgroundColor: theme.backgroundColor,
-      appBar: generateSimpleAppBar(context: context, title: 'About us', elevation: 0, iconTheme: theme.iconTheme),
+      appBar: generateSimpleAppBar(context: context, title: 'Where to find us', elevation: 0, iconTheme: theme.iconTheme),
       bottomNavigationBar: CustomBottomNavigationBar(
         elevation: 5,
         selection: BottomNavBarSelection.whereToFindUs,
