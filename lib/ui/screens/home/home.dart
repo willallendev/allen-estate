@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
   final List<RealEstateCategory> reCategoryList;
   final Function onSearch;
   final void Function() onNavigateToAboutUs;
-  final void Function() onNavigateToWhereAreWe;
+  final void Function() onNavigateToWhereToFindUs;
   final void Function(RealEstateListItem realEstate) onReCardTap;
   final void Function(RealEstateCategory category) onReCategoryCardTap;
   final void Function() onPopularTap;
@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
     this.onReCategoryCardTap,
     this.onPopularTap,
     this.onNavigateToAboutUs,
-    this.onNavigateToWhereAreWe,
+    this.onNavigateToWhereToFindUs,
   })  : assert(reList != null, 'reList param must be provided'),
         assert(reCategoryList != null, 'reCategoryList param must be provided');
 
@@ -50,7 +50,7 @@ class HomeScreen extends StatelessWidget {
           bottomNavigationBar: CustomBottomNavigationBar(
             elevation: context.watch<BarsElevationViewModel>().bottomAppBarElevation,
             onNavigateToAboutUs: onNavigateToAboutUs,
-            onNavigateToWhereAreWe: onNavigateToWhereAreWe,
+            onNavigateToWhereToFindUs: onNavigateToWhereToFindUs,
             selection: BottomNavBarSelection.home,
           ),
           body: AsyncStateManager(

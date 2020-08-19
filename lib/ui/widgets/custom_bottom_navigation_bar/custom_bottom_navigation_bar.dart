@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 enum BottomNavBarSelection {
   home,
   aboutUs,
-  whereAreWe,
+  whereToFindUs,
 }
 
 extension _meta on BottomNavBarSelection {
@@ -14,7 +14,7 @@ extension _meta on BottomNavBarSelection {
         return 0;
       case BottomNavBarSelection.aboutUs:
         return 1;
-      case BottomNavBarSelection.whereAreWe:
+      case BottomNavBarSelection.whereToFindUs:
         return 2;
     }
     return 0;
@@ -27,14 +27,14 @@ class CustomBottomNavigationBar extends StatelessWidget {
   final BottomNavBarSelection selection;
   final void Function() onNavigateToHome;
   final void Function() onNavigateToAboutUs;
-  final void Function() onNavigateToWhereAreWe;
+  final void Function() onNavigateToWhereToFindUs;
 
   CustomBottomNavigationBar({
     this.elevation,
     this.selection,
     this.onNavigateToHome,
     this.onNavigateToAboutUs,
-    this.onNavigateToWhereAreWe,
+    this.onNavigateToWhereToFindUs,
   });
 
   void _onTap(BuildContext context, int index) {
@@ -44,7 +44,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
       } else if (index == 1) {
         onNavigateToAboutUs?.call();
       } else {
-        onNavigateToWhereAreWe?.call();
+        onNavigateToWhereToFindUs?.call();
       }
     }
   }
