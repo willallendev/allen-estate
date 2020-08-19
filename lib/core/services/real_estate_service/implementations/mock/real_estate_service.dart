@@ -52,7 +52,24 @@ class RealEstateMockService extends RealEstateService {
 
   @override
   Future<AsyncResult<List<RealEstateListItem>>> getSimilarRealEstatesById({String id, int page = 1, int size = 10}) async {
-    log('Fetching similar real estates for re with id:$id. page: $page, size: $size', name: '$tag/getSimilarRealEstatesById');
+    log('Fetching results id: $id. page: $page, size: $size', name: '$tag/getSimilarRealEstatesById');
+    List<RealEstateListItem> results = mockReList
+        .sublist((page - 1) * size, (page - 1) * size + size)
+        .map((e) => parser.realEstateListItemFromJson(e))
+        .toList();
+    PaginationData paginationData = PaginationData(
+      total: results.length,
+      perPage: size,
+      lastPage: (mockReList.length / size).truncate(),
+      currentPage: page,
+    );
+    await Future.delayed(Duration(milliseconds: 450));
+    return AsyncResult(data: results, pagination: paginationData);
+  }
+
+  @override
+  Future<AsyncResult<List<RealEstateListItem>>> getRealEstatesByCategoryId({String id, int page = 1, int size = 10}) async {
+    log('Fetching results id: $id. page: $page, size: $size', name: '$tag/getRealEstatesByCategoryId');
     List<RealEstateListItem> results = mockReList
         .sublist((page - 1) * size, (page - 1) * size + size)
         .map((e) => parser.realEstateListItemFromJson(e))
