@@ -56,6 +56,7 @@ class HomeContainer extends StatelessWidget {
           onReCardTap: (realEstate) => _onReCardNavigate(context, realEstate),
           onReCategoryCardTap: (category) => _onReCategoryCardNavigate(context, category),
           onPopularTap: () => _onPopularNavigate(context),
+          onNavigateToAboutUs: () => ExtendedNavigator.of(context).replace(Routes.aboutUs),
         );
       },
     );
