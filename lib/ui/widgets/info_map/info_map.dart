@@ -13,9 +13,10 @@ class InfoMap extends StatelessWidget {
   static const tag = 'InfoMap';
   final double lat;
   final double long;
+  final int zoomLevel;
   final MapBoxStaticImage staticImage = MapBoxStaticImage(apiKey: secret.apiKey);
 
-  InfoMap({this.lat, this.long});
+  InfoMap({this.lat, this.long, this.zoomLevel = 14});
 
   void _launchMapApp(BuildContext context) async {
     MapType mapType;
@@ -79,7 +80,7 @@ class InfoMap extends StatelessWidget {
                   ),
                   height: height.truncate(),
                   width: height.truncate(),
-                  zoomLevel: 14,
+                  zoomLevel: zoomLevel ?? 14,
                   style: MapBoxStyle.Streets,
                   render2x: true,
                 ),

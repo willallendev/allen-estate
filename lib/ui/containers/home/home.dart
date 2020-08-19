@@ -41,12 +41,15 @@ class HomeContainer extends StatelessWidget {
   }
 
   void _onPopularNavigate(BuildContext context) {
-    ExtendedNavigator.of(context).push(Routes.rePopularList);
+//    ExtendedNavigator.of(context).push(Routes.rePopularList);
   }
 
   @override
   Widget build(BuildContext context) {
     return BaseContainer<HomeViewModel>(
+      onModelReady: (HomeViewModel model) {
+        model.init();
+      },
       builder: (BuildContext context, HomeViewModel model, Widget child) {
         return HomeScreen(
           reCategoryList: model.mainState.data.reCategoryList,
@@ -56,6 +59,8 @@ class HomeContainer extends StatelessWidget {
           onReCardTap: (realEstate) => _onReCardNavigate(context, realEstate),
           onReCategoryCardTap: (category) => _onReCategoryCardNavigate(context, category),
           onPopularTap: () => _onPopularNavigate(context),
+          onNavigateToWhereToFindUs: () => ExtendedNavigator.of(context).replace(Routes.whereToFindUs),
+          onNavigateToAboutUs: () => ExtendedNavigator.of(context).replace(Routes.aboutUs),
         );
       },
     );

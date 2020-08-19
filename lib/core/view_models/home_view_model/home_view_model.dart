@@ -17,7 +17,6 @@ class HomeViewModel extends BaseViewModel {
 
   HomeViewModel() {
     this.createStatePiece<HomeData>(_mainStateTag, data: HomeData(popularReList: [], reCategoryList: []));
-    init();
   }
 
   void init() {

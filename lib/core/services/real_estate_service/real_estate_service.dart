@@ -9,4 +9,6 @@ abstract class RealEstateService {
   Future<AsyncResult<RealEstate>> getRealEstateById({String id});
 
   Future<AsyncResult<List<RealEstateListItem>>> getSimilarRealEstatesById({String id, int page = 1, int size = 10});
+
+  Future<AsyncResult<List<RealEstateListItem>>> getRealEstatesByCategoryId({String id, int page = 1, int size = 10});
 }

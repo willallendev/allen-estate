@@ -1,6 +1,8 @@
+import 'package:allenrealestateflutter/core/data_models/async_state.dart';
 import 'package:allenrealestateflutter/core/data_models/real_estate.dart';
 import 'package:allenrealestateflutter/ui/utils/app_bar_generators.dart';
 import 'package:allenrealestateflutter/ui/view_models/bars_elevation_view_model/bars_elevation_view_model.dart';
+import 'package:allenrealestateflutter/ui/widgets/async_state_manager/async_state_manager.dart';
 import 'package:allenrealestateflutter/ui/widgets/lists/re_list/re_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -11,11 +13,28 @@ class ReResultsListScreen extends StatelessWidget {
   final void Function() onSearch;
   final void Function() onFilter;
   final void Function() onEndReached;
+  final AsyncState state;
   final bool noMore;
   final List<RealEstateListItem> reList;
   final String title;
 
-  ReResultsListScreen({this.onReTap, this.onSearch, this.onFilter, this.onEndReached, this.noMore, this.reList, this.title});
+  ReResultsListScreen({
+    this.onReTap,
+    this.onSearch,
+    this.onFilter,
+    this.onEndReached,
+    this.noMore,
+    this.reList,
+    this.title,
+    this.state,
+  });
+
+  AsyncState _listifyAsyncState(AsyncState state) {
+    if (state == AsyncState.loading && !noMore && reList.length == 0) {
+      return AsyncState.loading;
+    }
+    return state;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +50,15 @@ class ReResultsListScreen extends StatelessWidget {
           onFilter: onFilter,
           onSearch: onSearch,
         ),
-        body: ReList(
-          controller: context.watch<BarsElevationViewModel>().scrollController,
-          realEstateList: reList,
-          onTap: onReTap,
-          onEndReached: onEndReached,
-          noMore: noMore,
+        body: AsyncStateManager(
+          state: _listifyAsyncState(state),
+          child: ReList(
+            controller: context.watch<BarsElevationViewModel>().scrollController,
+            realEstateList: reList,
+            onTap: onReTap,
+            onEndReached: onEndReached,
+            noMore: noMore,
+          ),
         ),
       ),
     );
