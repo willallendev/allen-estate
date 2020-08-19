@@ -44,6 +44,7 @@ dependencies:
   flutter_svg: ^0.18.0
   webview_flutter: ^0.3.22+1
   # Misc
+  url_launcher: ^5.5.0
   path: ^1.7.0
   path_provider: ^1.6.11
   flutter_cache_manager: ^1.4.1
