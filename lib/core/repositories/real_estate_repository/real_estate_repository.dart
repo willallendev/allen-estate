@@ -23,4 +23,8 @@ class RealEstateRepository {
   Future<AsyncResult<List<RealEstateListItem>>> getSimilarRealEstatesById({int page = 1, int size = 10, String id}) {
     return webService.getSimilarRealEstatesById(page: page, size: size, id: id);
   }
+
+  Future<AsyncResult<List<RealEstateListItem>>> getRealEstatesByCategoryId({int page = 1, int size = 10, String id}) {
+    return webService.getRealEstatesByCategoryId(page: page, size: size, id: id);
+  }
 }

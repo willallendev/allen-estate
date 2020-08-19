@@ -7,16 +7,16 @@ import 'package:allenrealestateflutter/core/view_models/base_view_model/base_vie
 import 'package:injectable/injectable.dart';
 
 @injectable
-class ReSearchResultsViewModel extends BaseViewModel {
-  static const tag = 'ReSearchResultsViewModel';
+class ReCategoryViewModel extends BaseViewModel {
+  static const tag = 'ReCategoryViewModel';
   static const _mainStateTag = 'main';
   RealEstateRepository _realEstateRepo = locator<RealEstateRepository>();
-  String query;
+  String id;
 
   ViewModelStatePiece<List<RealEstateListItem>> get mainState => state[_mainStateTag];
 
-  ReSearchResultsViewModel() {
-    this.createStatePiece<List<RealEstateListItem>>(
+  ReCategoryViewModel() {
+    createStatePiece(
       _mainStateTag,
       data: <RealEstateListItem>[],
       pagination: PaginationData(),
@@ -33,15 +33,15 @@ class ReSearchResultsViewModel extends BaseViewModel {
 
     PaginationData pagination = mainState.pagination;
     List<dynamic> results = await Future.wait([
-      _realEstateRepo.getRealEstatesByQuery(
+      _realEstateRepo.getRealEstatesByCategoryId(
         page: currentReList.length == 0 ? 1 : pagination.currentPage + 1,
-        query: query,
+        id: id,
       ),
     ]);
     try {
       asyncResultReResultsList = results[0] as AsyncResult<List<RealEstateListItem>>;
     } catch (error) {
-      throw Exception('$tag - Could not get search results data: $error');
+      throw Exception('$tag - Could not get real estates by category data: $error');
     }
 
     return AsyncResult(

@@ -47,6 +47,9 @@ class HomeContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseContainer<HomeViewModel>(
+      onModelReady: (HomeViewModel model) {
+        model.init();
+      },
       builder: (BuildContext context, HomeViewModel model, Widget child) {
         return HomeScreen(
           reCategoryList: model.mainState.data.reCategoryList,
