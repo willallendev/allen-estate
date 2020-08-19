@@ -81,6 +81,7 @@ AppBar generateSimpleAppBar({
   final _iconTheme = theme.iconTheme;
 
   return AppBar(
+    elevation: elevation ?? 0,
     titleSpacing: titleSpacing,
     iconTheme: iconTheme ?? _iconTheme,
     backgroundColor: backgroundColor ?? theme.backgroundColor,

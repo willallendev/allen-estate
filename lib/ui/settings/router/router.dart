@@ -1,3 +1,4 @@
+import 'package:allenrealestateflutter/ui/containers/about_us/about_us.dart';
 import 'package:allenrealestateflutter/ui/containers/home/home.dart';
 import 'package:allenrealestateflutter/ui/containers/re_category/re_category.dart';
 import 'package:allenrealestateflutter/ui/containers/re_popular_list/re_popular_list.dart';
@@ -12,7 +13,7 @@ import 'package:auto_route/auto_route_annotations.dart';
   routes: <AutoRoute>[
     // initial route is named "/"
     AdaptiveRoute(page: HomeContainer, initial: true, name: 'home'),
-//    AdaptiveRoute(page: AboutUsContainer, name: 'aboutUs', path: '/about-us'),
+    AdaptiveRoute(page: AboutUsContainer, name: 'aboutUs', path: '/about-us'),
     AdaptiveRoute(page: WhereToFindUsContainer, name: 'whereToFindUs', path: '/where-to-find-us'),
     AdaptiveRoute(page: ReSearchResultsContainer, name: 'reSearchResults', path: '/real-estates'),
     AdaptiveRoute(page: ReSingleContainer, name: 'reSingle', path: '/real-estates/single/:id'),
