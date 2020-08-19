@@ -8,7 +8,9 @@ class WhereToFindUsContainer extends StatelessWidget {
     ExtendedNavigator.of(context).replace(Routes.home);
   }
 
-  void _onNavigateAboutUs(BuildContext context) {}
+  void _onNavigateAboutUs(BuildContext context) {
+    ExtendedNavigator.of(context).replace(Routes.aboutUs);
+  }
 
   @override
   Widget build(BuildContext context) {
