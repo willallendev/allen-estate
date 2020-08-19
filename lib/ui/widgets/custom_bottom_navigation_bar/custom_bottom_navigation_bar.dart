@@ -1,24 +1,50 @@
-import 'package:allenrealestateflutter/ui/settings/router/router.gr.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-// TODO: this components knows too much, refactor to make it dumb
+enum BottomNavBarSelection {
+  home,
+  aboutUs,
+  whereAreWe,
+}
+
+extension _meta on BottomNavBarSelection {
+  int toIndex() {
+    switch (this) {
+      case BottomNavBarSelection.home:
+        return 0;
+      case BottomNavBarSelection.aboutUs:
+        return 1;
+      case BottomNavBarSelection.whereAreWe:
+        return 2;
+    }
+    return 0;
+  }
+}
+
 class CustomBottomNavigationBar extends StatelessWidget {
   static const tag = 'CustomBottomNavigationBar';
   final double elevation;
-  final int currentIndex;
+  final BottomNavBarSelection selection;
+  final void Function() onNavigateToHome;
+  final void Function() onNavigateToAboutUs;
+  final void Function() onNavigateToWhereAreWe;
 
-  CustomBottomNavigationBar({this.elevation, this.currentIndex});
+  CustomBottomNavigationBar({
+    this.elevation,
+    this.selection,
+    this.onNavigateToHome,
+    this.onNavigateToAboutUs,
+    this.onNavigateToWhereAreWe,
+  });
 
   void _onTap(BuildContext context, int index) {
-    if (currentIndex != index) {
+    if (selection.toIndex() != index) {
       if (index == 0) {
-        ExtendedNavigator.of(context).replace(Routes.home);
+        onNavigateToHome?.call();
       } else if (index == 1) {
-        ExtendedNavigator.of(context).replace(Routes.aboutUs);
+        onNavigateToAboutUs?.call();
       } else {
-        Scaffold.of(context).showSnackBar(_buildSnackBar());
+        onNavigateToWhereAreWe?.call();
       }
     }
   }
@@ -28,7 +54,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
     final theme = Theme.of(context);
     return BottomNavigationBar(
       elevation: elevation ?? 5,
-      currentIndex: currentIndex,
+      currentIndex: selection.toIndex(),
       backgroundColor: theme.backgroundColor,
       selectedItemColor: theme.primaryColor,
       unselectedItemColor: theme.textTheme.bodyText1.color,
@@ -51,36 +77,4 @@ class CustomBottomNavigationBar extends StatelessWidget {
       ],
     );
   }
-
-  Widget _buildWarningIcon() => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 4),
-        child: FaIcon(
-          FontAwesomeIcons.exclamationTriangle,
-          color: Colors.deepOrange,
-          size: 16,
-        ),
-      );
-
-  Widget _buildLaptopIcon() => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 4),
-        child: FaIcon(
-          FontAwesomeIcons.laptopCode,
-          color: Colors.deepOrange,
-          size: 16,
-        ),
-      );
-
-  Widget _buildSnackBar() => SnackBar(
-          content: Row(
-        children: <Widget>[
-          _buildWarningIcon(),
-          _buildLaptopIcon(),
-          Text(
-            '  Under development  ',
-            textAlign: TextAlign.center,
-          ),
-          _buildLaptopIcon(),
-          _buildWarningIcon(),
-        ],
-      ));
 }
