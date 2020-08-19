@@ -6,7 +6,7 @@ import 'package:allenrealestateflutter/core/repositories/real_estate_repository/
 import 'package:allenrealestateflutter/core/view_models/base_view_model/base_view_model.dart';
 import 'package:injectable/injectable.dart';
 
-@lazySingleton
+@injectable
 class HomeViewModel extends BaseViewModel {
   static const tag = 'HomeViewModel';
   static const _mainStateTag = 'main';
