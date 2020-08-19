@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 AppBar generateIdleSearchAppBar({@required BuildContext context, Function onTap, double elevation}) {
   final theme = Theme.of(context);
@@ -43,11 +42,11 @@ AppBar generateResultsSearchAppBar(
         icon: Icon(Icons.search, color: fontColor),
         onPressed: onSearch,
       ),
-      IconButton(
-        splashRadius: 24,
-        icon: SvgPicture.asset('lib/ui/assets/icons/ic_filter.svg', color: fontColor),
-        onPressed: onFilter,
-      ),
+//      IconButton(
+//        splashRadius: 24,
+//        icon: SvgPicture.asset('lib/ui/assets/icons/ic_filter.svg', color: fontColor),
+//        onPressed: onFilter,
+//      ),
     ],
     title: Material(
       clipBehavior: Clip.antiAlias,
