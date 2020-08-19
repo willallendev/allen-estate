@@ -56,6 +56,7 @@ class ReCategoryContainer extends StatelessWidget {
           onFilter: () => log('onFilter', name: tag),
           onEndReached: () => model.init(),
           onReTap: (realEstate) => _onReNavigate(context, realEstate),
+          state: model.mainState.state,
         );
       },
     );
