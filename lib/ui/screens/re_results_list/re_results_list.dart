@@ -30,8 +30,11 @@ class ReResultsListScreen extends StatelessWidget {
   });
 
   AsyncState _listifyAsyncState(AsyncState state) {
-    if (state == AsyncState.loading && !noMore && reList.length == 0) {
+    if (state == AsyncState.loading && reList.length == 0) {
       return AsyncState.loading;
+    }
+    if (state == AsyncState.loading) {
+      return AsyncState.done;
     }
     return state;
   }
