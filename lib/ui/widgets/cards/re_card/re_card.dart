@@ -41,6 +41,7 @@ class ReCard extends StatelessWidget {
           child: GestureDetector(
             onTap: () => onTap?.call(re),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 _buildCoverImage(textTheme, theme, re),
                 Container(

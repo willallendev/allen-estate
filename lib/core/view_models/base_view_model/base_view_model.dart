@@ -59,7 +59,7 @@ class BaseViewModel extends ChangeNotifier {
       }
       notifyListeners();
     } catch (e) {
-      log('$_tag onError: $e');
+      log('$_tag onError: $e on resultGenerator for state-piece:\'$key\'');
       if (timeId.isAtSameMomentAs(_state[key].dateTime)) {
         String errorMsg = e != null ? '$e' : '';
         mapErrorToState(key, errorMsg);
