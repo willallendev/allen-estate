@@ -8,7 +8,8 @@ import 'package:allenrealestateflutter/core/services/real_estate_service/impleme
 import 'package:allenrealestateflutter/core/services/real_estate_service/real_estate_service.dart';
 import 'package:injectable/injectable.dart';
 
-@LazySingleton(as: RealEstateService)
+@Environment("test")
+@Injectable(as: RealEstateService)
 class RealEstateMockService extends RealEstateService {
   static const tag = 'RealEstateMockService';
   final List<Map> mockReList = realEstateList;
