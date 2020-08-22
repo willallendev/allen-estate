@@ -9,6 +9,7 @@ class ReList extends StatefulWidget {
   final double verticalPadding;
   final bool noMore;
   final void Function() onEndReached;
+
   // List of index that have already called onEndReached
 
   ReList({this.realEstateList, this.onTap, this.verticalPadding = 8, this.noMore = false, this.onEndReached, this.controller})
@@ -31,8 +32,10 @@ class _ReListState extends State<ReList> {
     final progressIndicatorHeight = 16.0;
 
     if (!widget.noMore && index == widget.realEstateList.length - 3 && !_bannedCallers.contains(index)) {
-      _bannedCallers.add(index);
-      widget.onEndReached?.call();
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _bannedCallers.add(index);
+        widget.onEndReached?.call();
+      });
     }
 
     if (index >= widget.realEstateList.length) {
