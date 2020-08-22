@@ -7,8 +7,7 @@ Real Estate Client App written in Dart/Flutter.
 ![UI Design](https://i.imgur.com/SAYERIX.png)
 
 
-#### ⚠⚠⚠This project has NOT reach version 1.0.0 yet⚠⚠⚠
-File structure, apis, and file names may change till we reach beta.
+#### 🎉🎉🎉V1.0 is here!🎉🎉🎉
 
 
 ## Getting Started
@@ -57,9 +56,6 @@ The **iu** folder contains all the flutter code, the only folder that depends on
 ***
 
 ## TODO 🛒 
-
-### General
-* Change mock rest client implementation for real one (mock backend is not ready)
 
 ### Home Screen
 * Add pull to refresh
