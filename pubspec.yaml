@@ -55,12 +55,19 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  # CLI Tools
+  flutter_launcher_icons: ^0.7.5
   # App wrappers
   device_preview: ^0.4.5
   # Code generators
   build_runner: ^1.10.0
   auto_route_generator: ^0.6.7
   injectable_generator: ^1.0.3
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "lib/ui/assets/icons/ic_launcher.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
