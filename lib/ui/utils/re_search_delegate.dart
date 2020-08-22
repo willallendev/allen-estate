@@ -17,7 +17,9 @@ class ReSearchDelegate extends SearchDelegate<String> {
   Widget buildResults(BuildContext context) {
     final trimQuery = query.trim();
     if (trimQuery != '') {
-      close(context, query);
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        close(context, query);
+      });
     }
     return Container();
   }
