@@ -34,7 +34,7 @@ dependencies:
   injectable: ^1.0.2
   provider: ^4.3.1
   # Networking
-  dio: ^3.0.9
+  dio: ^3.0.10
   # Storage
   flutter_secure_storage: ^3.3.3
   # Widgets
