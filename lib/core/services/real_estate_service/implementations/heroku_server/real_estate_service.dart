@@ -47,9 +47,18 @@ class Service extends RealEstateService {
   }
 
   @override
-  Future<AsyncResult<List<RealEstateListItem>>> getRealEstatesByQuery({int page = 1, int size = 10, String query}) {
-    // TODO: implement getRealEstatesByQuery
-    throw UnimplementedError();
+  Future<AsyncResult<List<RealEstateListItem>>> getRealEstatesByQuery({int page = 1, int size = 10, String query}) async {
+    Response raw = await _dio.get('/search?q=$query&page=$page&limit=$size');
+    List response = raw.data['data'];
+    List<RealEstateListItem> _results = response.map((e) => parser.realEstateListItemFromMap(e)).toList();
+    PaginationData pagination = PaginationData(
+      currentPage: raw.data['page'],
+      lastPage: raw.data['last_page'],
+      perPage: raw.data['limit'],
+      total: raw.data['total'],
+    );
+
+    return AsyncResult(data: _results, pagination: pagination);
   }
 
   @override
