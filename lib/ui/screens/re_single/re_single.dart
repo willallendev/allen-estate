@@ -37,6 +37,7 @@ class ReEstateSingleScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: theme.backgroundColor,
+      appBar: state != AsyncState.done ? AppBar(iconTheme: theme.iconTheme) : null,
       body: Theme(
         data: theme.copyWith(accentColor: Colors.white),
         child: AsyncStateManager(
