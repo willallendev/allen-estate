@@ -4,12 +4,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AsyncStateManager extends StatelessWidget {
   final AsyncState state;
-  final Widget child;
+  final Widget Function(BuildContext context) builder;
   final Widget error;
   final Widget loading;
 
-  AsyncStateManager({this.state, @required this.child, this.error, this.loading})
-      : assert(child != null, 'child param must be provided');
+  AsyncStateManager({this.state, @required this.builder, this.error, this.loading})
+      : assert(builder != null, 'child param must be provided');
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +21,9 @@ class AsyncStateManager extends StatelessWidget {
       case AsyncState.error:
         return error ?? _buildErrorContent(context);
       case AsyncState.done:
-        return child;
+        return builder(context);
       default:
-        return child;
+        return builder(context);
     }
   }
 

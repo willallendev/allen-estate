@@ -55,7 +55,7 @@ class HomeScreen extends StatelessWidget {
           ),
           body: AsyncStateManager(
             state: state,
-            child: Theme(
+            builder: (BuildContext context) => Theme(
               data: theme.copyWith(accentColor: Colors.white),
               child: ListView(
                 controller: context.watch<BarsElevationViewModel>().scrollController,
