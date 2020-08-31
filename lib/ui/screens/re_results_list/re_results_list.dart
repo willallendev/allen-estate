@@ -55,7 +55,7 @@ class ReResultsListScreen extends StatelessWidget {
         ),
         body: AsyncStateManager(
           state: _listifyAsyncState(state),
-          child: ReList(
+          builder: (context) => ReList(
             controller: context.watch<BarsElevationViewModel>().scrollController,
             realEstateList: reList,
             onTap: onReTap,
