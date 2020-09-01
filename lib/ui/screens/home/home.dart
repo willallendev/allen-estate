@@ -21,6 +21,7 @@ class HomeScreen extends StatelessWidget {
   final void Function(RealEstateListItem realEstate) onReCardTap;
   final void Function(RealEstateCategory category) onReCategoryCardTap;
   final void Function() onPopularTap;
+  final void Function() onRetry;
 
   HomeScreen({
     this.state,
@@ -32,6 +33,7 @@ class HomeScreen extends StatelessWidget {
     this.onPopularTap,
     this.onNavigateToAboutUs,
     this.onNavigateToWhereToFindUs,
+    this.onRetry,
   })  : assert(reList != null, 'reList param must be provided'),
         assert(reCategoryList != null, 'reCategoryList param must be provided');
 
@@ -55,6 +57,7 @@ class HomeScreen extends StatelessWidget {
           ),
           body: AsyncStateManager(
             state: state,
+            onRetry: onRetry,
             builder: (BuildContext context) => Theme(
               data: theme.copyWith(accentColor: Colors.white),
               child: ListView(
