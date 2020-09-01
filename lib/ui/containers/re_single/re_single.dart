@@ -73,6 +73,7 @@ class ReSingleContainer extends StatelessWidget {
           onNavigateToGallery: (index) => _onNavigateToGallery(context, model.mainState.data?.realEstate, index),
           onReCardTap: (realEstate) => _onReCardNavigate(context, realEstate),
           onShareAction: () => _onShareAction(model.mainState.data?.realEstate),
+          onRetry: () => model.getSingleData(id),
         );
       },
     );
