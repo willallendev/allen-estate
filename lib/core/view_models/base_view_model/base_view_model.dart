@@ -58,8 +58,8 @@ class BaseViewModel extends ChangeNotifier {
         mapPaginationToState(key, result.pagination);
       }
       notifyListeners();
-    } catch (e) {
-      log('$_tag onError: $e on resultGenerator for state-piece:\'$key\'');
+    } catch (e, stackTrace) {
+      log('$_tag onError: \'${e.message}\' on resultGenerator for state-piece:\'$key\' \nstackTrace: $stackTrace');
       if (timeId.isAtSameMomentAs(_state[key].dateTime)) {
         String errorMsg = e != null ? '$e' : '';
         mapErrorToState(key, errorMsg);
