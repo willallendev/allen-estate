@@ -8,4 +8,4 @@ const prod = Environment('prod');
 final locator = GetIt.instance;
 
 @injectableInit
-void setupLocator() => $initGetIt(locator, environment: 'prod');
+void setupLocator() => $initGetIt(locator, environment: prod.name);
