@@ -48,7 +48,7 @@ class _WhereToFindUsScreenState extends State<WhereToFindUsScreen> {
           ),
           AsyncStateManager(
             state: _state,
-            child: Container(),
+            builder: (context) => Container(),
           )
         ],
       ),

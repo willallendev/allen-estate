@@ -1,15 +1,19 @@
 import 'package:allenrealestateflutter/core/data_models/async_state.dart';
+import 'package:allenrealestateflutter/ui/widgets/custom_raised_button/custom_raised_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AsyncStateManager extends StatelessWidget {
   final AsyncState state;
-  final Widget child;
+  final Widget Function(BuildContext context) builder;
+  final void Function() onRetry;
   final Widget error;
+  final Widget notFound;
+  final Widget noResults;
   final Widget loading;
 
-  AsyncStateManager({this.state, @required this.child, this.error, this.loading})
-      : assert(child != null, 'child param must be provided');
+  AsyncStateManager({this.state, @required this.builder, this.error, this.loading, this.onRetry, this.notFound, this.noResults})
+      : assert(builder != null, 'child param must be provided');
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +23,15 @@ class AsyncStateManager extends StatelessWidget {
       case AsyncState.loading:
         return loading ?? _buildLoadingContent(context);
       case AsyncState.error:
-        return error ?? _buildErrorContent(context);
+        return error ?? _buildErrorContent(context: context, showButton: true);
+      case AsyncState.notFound:
+        return error ?? _buildErrorContent(context: context, text: '404, seems like you are lost');
+      case AsyncState.notResults:
+        return error ?? _buildErrorContent(context: context, text: 'Sorry, no results where found');
       case AsyncState.done:
-        return child;
+        return builder(context);
       default:
-        return child;
+        return builder(context);
     }
   }
 
@@ -39,19 +47,27 @@ class AsyncStateManager extends StatelessWidget {
     );
   }
 
-  Widget _buildErrorContent(BuildContext context) {
+  Widget _buildErrorContent(
+      {BuildContext context, String text = 'Sorry Something went wrong...', bool showButton = false, Widget icon}) {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme;
+    final _icon = icon ?? FaIcon(FontAwesomeIcons.solidDizzy, color: textTheme.bodyText1.color, size: 24);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        FaIcon(FontAwesomeIcons.solidDizzy, color: textTheme.bodyText1.color, size: 24),
-        Container(height: 16),
+        _icon,
+        Container(height: 8),
         Text(
-          'Sorry Something went wrong...',
+          text,
           style: textTheme.bodyText1,
           softWrap: true,
         ),
+        Container(height: 32),
+        if (showButton && onRetry != null)
+          CustomRaisedButton(
+            child: Text('Retry'),
+            onPressed: onRetry,
+          ),
       ],
     );
   }

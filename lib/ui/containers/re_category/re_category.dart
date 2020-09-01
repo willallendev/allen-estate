@@ -57,6 +57,7 @@ class ReCategoryContainer extends StatelessWidget {
           onEndReached: () => model.init(),
           onReTap: (realEstate) => _onReNavigate(context, realEstate),
           state: model.mainState.state,
+          onRetry: model.init,
         );
       },
     );

@@ -16,6 +16,7 @@ class ReEstateSingleScreen extends StatelessWidget {
   final void Function(RealEstateListItem realEstate) onReCardTap;
   final void Function() onNavigateToDescription;
   final void Function() onShareAction;
+  final void Function() onRetry;
   final void Function(int) onNavigateToGallery;
   final _nFormat = NumberFormat.currency(decimalDigits: 0, symbol: '\$');
 
@@ -27,6 +28,7 @@ class ReEstateSingleScreen extends StatelessWidget {
     this.onNavigateToGallery,
     this.onShareAction,
     this.onReCardTap,
+    this.onRetry,
   });
 
   @override
@@ -37,82 +39,82 @@ class ReEstateSingleScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: theme.backgroundColor,
+      appBar: state != AsyncState.done ? AppBar(iconTheme: theme.iconTheme) : null,
       body: Theme(
         data: theme.copyWith(accentColor: Colors.white),
         child: AsyncStateManager(
           state: state,
-          child: state == AsyncState.done
-              ? CustomScrollView(
-                  slivers: [
-                    _buildSliverAppBar(context),
-                    SliverList(
-                        delegate: SliverChildListDelegate([
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-                        child: Text(
-                          '${re.type.toCapitalized()} ${re.dealType.name} in',
-                          style: textTheme.subtitle2,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Text(
-                          re.shortAddress,
-                          style: textTheme.headline4.copyWith(color: theme.primaryColor),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
-                        child: Text(
-                          _nFormat.format(re.price),
-                          style: textTheme.headline2.copyWith(color: theme.primaryColor),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(32, 0, 32, 24),
-                        child: ReInfoIcons(
-                          bathrooms: re.bathrooms,
-                          parkingSlots: re.parkingSlots,
-                          bedrooms: re.bedrooms,
-                          sqrSpace: re.sqrSpace,
-                          config: InfoIconsConfig.defaultConfig(
-                            layout: InfoIconsLayout.row,
-                            iconSize: 16,
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24),
-                        child: Divider(),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
-                        child: DescriptionPreview(text: re.description, onTap: onNavigateToDescription),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24),
-                        child: Divider(),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 32, 16, 0),
-                        child: InfoMap(lat: re.lat, long: re.long),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
-                        child: _buildAddress(context),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Text('Popular', style: textTheme.headline5.copyWith(color: theme.primaryColor)),
-                      ),
-                      Container(height: 16),
-                      ReCarousel(realEstateList: carouselRealEstateList, onTap: onReCardTap),
-                      Container(height: 24),
-                    ]))
-                  ],
-                )
-              : Container(),
+          onRetry: onRetry,
+          builder: (context) => CustomScrollView(
+            slivers: [
+              _buildSliverAppBar(context),
+              SliverList(
+                  delegate: SliverChildListDelegate([
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                  child: Text(
+                    '${re.type.toCapitalized()} ${re.dealType.name} in',
+                    style: textTheme.subtitle2,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
+                    re.shortAddress,
+                    style: textTheme.headline4.copyWith(color: theme.primaryColor),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
+                  child: Text(
+                    _nFormat.format(re.price),
+                    style: textTheme.headline2.copyWith(color: theme.primaryColor),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(32, 0, 32, 24),
+                  child: ReInfoIcons(
+                    bathrooms: re.bathrooms,
+                    parkingSlots: re.parkingSlots,
+                    bedrooms: re.bedrooms,
+                    sqrSpace: re.sqrSpace,
+                    config: InfoIconsConfig.defaultConfig(
+                      layout: InfoIconsLayout.row,
+                      iconSize: 16,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: Divider(),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+                  child: DescriptionPreview(text: re.description, onTap: onNavigateToDescription),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: Divider(),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 32, 16, 0),
+                  child: InfoMap(lat: re.lat, long: re.long),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
+                  child: _buildAddress(context),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text('Popular', style: textTheme.headline5.copyWith(color: theme.primaryColor)),
+                ),
+                Container(height: 16),
+                ReCarousel(realEstateList: carouselRealEstateList, onTap: onReCardTap),
+                Container(height: 24),
+              ]))
+            ],
+          ),
         ),
       ),
     );

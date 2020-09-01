@@ -58,8 +58,19 @@ class BaseViewModel extends ChangeNotifier {
         mapPaginationToState(key, result.pagination);
       }
       notifyListeners();
-    } catch (e) {
-      log('$_tag onError: $e on resultGenerator for state-piece:\'$key\'');
+    } on NotFoundException {
+      log('$_tag no found');
+      if (timeId.isAtSameMomentAs(_state[key].dateTime)) {
+        mapNotFoundToState(key);
+        notifyListeners();
+      }
+    } on NoResultsException {
+      if (timeId.isAtSameMomentAs(_state[key].dateTime)) {
+        mapNoResultsToState(key);
+        notifyListeners();
+      }
+    } catch (e, stackTrace) {
+      log('$_tag onError: \'${e.message}\' on resultGenerator for state-piece:\'$key\' \nstackTrace: $stackTrace');
       if (timeId.isAtSameMomentAs(_state[key].dateTime)) {
         String errorMsg = e != null ? '$e' : '';
         mapErrorToState(key, errorMsg);
@@ -71,6 +82,14 @@ class BaseViewModel extends ChangeNotifier {
   void mapSuccessToState(String key) {
     _state[key].state = AsyncState.done;
     _state[key].onSuccess?.call();
+  }
+
+  void mapNotFoundToState(String key) {
+    _state[key].state = AsyncState.notFound;
+  }
+
+  void mapNoResultsToState(String key) {
+    _state[key].state = AsyncState.notResults;
   }
 
   void mapErrorToState(String key, String error) {
@@ -130,4 +149,12 @@ class ViewModelStatePiece<T> {
   String toString() {
     return '_ViewModelStatePiece{data: $data, meta: $meta, state: $state, pagination: $pagination, dateTime: $dateTime}';
   }
+}
+
+class NotFoundException implements Exception {
+  final message = 'No found';
+}
+
+class NoResultsException implements Exception {
+  final message = 'No results found';
 }
