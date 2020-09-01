@@ -44,6 +44,10 @@ class ReCategoryViewModel extends BaseViewModel {
       throw Exception('$tag - Could not get real estates by category data: $error');
     }
 
+    if (asyncResultReResultsList.pagination.total == 0) {
+      throw NoResultsException();
+    }
+
     return AsyncResult(
       data: [...currentReList, ...asyncResultReResultsList.data],
       pagination: asyncResultReResultsList.pagination,

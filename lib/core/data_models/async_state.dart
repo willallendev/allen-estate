@@ -3,4 +3,6 @@ enum AsyncState {
   loading,
   error,
   done,
+  notFound,
+  notResults,
 }
