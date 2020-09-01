@@ -7,6 +7,7 @@ import 'package:allenrealestateflutter/ui/widgets/lists/re_list/re_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+// TODO: Abstract infinite list widget
 class ReResultsListScreen extends StatelessWidget {
   static const tag = 'ReResultsListScreen';
   final void Function(RealEstateListItem) onReTap;
@@ -32,10 +33,7 @@ class ReResultsListScreen extends StatelessWidget {
   });
 
   AsyncState _listifyAsyncState(AsyncState state) {
-    if (state == AsyncState.loading && reList.length == 0) {
-      return AsyncState.loading;
-    }
-    if (state == AsyncState.loading) {
+    if (reList.length > 0 && (state == AsyncState.loading || state == AsyncState.error)) {
       return AsyncState.done;
     }
     return state;
@@ -64,6 +62,8 @@ class ReResultsListScreen extends StatelessWidget {
             onTap: onReTap,
             onEndReached: onEndReached,
             noMore: noMore,
+            error: reList.length > 0 && state == AsyncState.error,
+            onRetry: onRetry,
           ),
         ),
       ),
