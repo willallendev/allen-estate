@@ -13,6 +13,7 @@ class ReResultsListScreen extends StatelessWidget {
   final void Function() onSearch;
   final void Function() onFilter;
   final void Function() onEndReached;
+  final void Function() onRetry;
   final AsyncState state;
   final bool noMore;
   final List<RealEstateListItem> reList;
@@ -27,6 +28,7 @@ class ReResultsListScreen extends StatelessWidget {
     this.reList,
     this.title,
     this.state,
+    this.onRetry,
   });
 
   AsyncState _listifyAsyncState(AsyncState state) {
@@ -54,6 +56,7 @@ class ReResultsListScreen extends StatelessWidget {
           onSearch: onSearch,
         ),
         body: AsyncStateManager(
+          onRetry: onRetry,
           state: _listifyAsyncState(state),
           builder: (context) => ReList(
             controller: context.watch<BarsElevationViewModel>().scrollController,

@@ -16,6 +16,7 @@ class ReEstateSingleScreen extends StatelessWidget {
   final void Function(RealEstateListItem realEstate) onReCardTap;
   final void Function() onNavigateToDescription;
   final void Function() onShareAction;
+  final void Function() onRetry;
   final void Function(int) onNavigateToGallery;
   final _nFormat = NumberFormat.currency(decimalDigits: 0, symbol: '\$');
 
@@ -27,6 +28,7 @@ class ReEstateSingleScreen extends StatelessWidget {
     this.onNavigateToGallery,
     this.onShareAction,
     this.onReCardTap,
+    this.onRetry,
   });
 
   @override
@@ -42,6 +44,7 @@ class ReEstateSingleScreen extends StatelessWidget {
         data: theme.copyWith(accentColor: Colors.white),
         child: AsyncStateManager(
           state: state,
+          onRetry: onRetry,
           builder: (context) => CustomScrollView(
             slivers: [
               _buildSliverAppBar(context),

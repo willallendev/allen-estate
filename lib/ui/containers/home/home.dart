@@ -55,6 +55,7 @@ class HomeContainer extends StatelessWidget {
           reCategoryList: model.mainState.data.reCategoryList,
           reList: model.mainState.data.popularReList,
           state: model.mainState?.state,
+          onRetry: model.init,
           onSearch: () => _onSearch(context),
           onReCardTap: (realEstate) => _onReCardNavigate(context, realEstate),
           onReCategoryCardTap: (category) => _onReCategoryCardNavigate(context, category),
