@@ -57,17 +57,17 @@ The **iu** folder contains all the flutter code, the only folder that depends on
 
 ## TODO 🛒 
 
-### Home Screen
-* Add pull to refresh
+### General
 * Add data persistency to improve user experience
+* Update view models to auto-retry when internet connection is back (image widgets as well)
+* Add dark mode
+* Add language internationalisation 
+* Add tablet and desktop screen resolution support
+
+### Home Screen
 
 ### Real Estate List Screen
 * Add filters UI and business logic
-* Add retry button on page fetching error
 
 ### Real Estate Single Screen
-* Fix app bar not showing when fetching data from server fails
 * Add feature to share images with watermark thought native interfaces
-
-****
-##### Note for myself: please add testing for your own good 😞😩
