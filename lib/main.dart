@@ -5,7 +5,7 @@ import 'package:allenrealestateflutter/ui/settings/theme/theme.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart' as Foundation;
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Router;
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 

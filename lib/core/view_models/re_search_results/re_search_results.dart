@@ -12,8 +12,10 @@ class ReSearchResultsViewModel extends BaseViewModel {
   static const _mainStateTag = 'main';
   RealEstateRepository _realEstateRepo = locator<RealEstateRepository>();
   String query;
+  bool flagModal = false;
 
-  ViewModelStatePiece<List<RealEstateListItem>> get mainState => state[_mainStateTag];
+  ViewModelStatePiece<List<RealEstateListItem>> get mainState =>
+      state[_mainStateTag];
 
   ReSearchResultsViewModel() {
     this.createStatePiece<List<RealEstateListItem>>(
@@ -24,10 +26,13 @@ class ReSearchResultsViewModel extends BaseViewModel {
   }
 
   void init() {
-    this.mapFutureResultToState<List<RealEstateListItem>>(key: _mainStateTag, resultGenerator: () => _getSearchResults());
+    this.mapFutureResultToState<List<RealEstateListItem>>(
+        key: _mainStateTag, resultGenerator: () => _getSearchResults());
   }
 
   Future<AsyncResult<List<RealEstateListItem>>> _getSearchResults() async {
+    flagModal = true;
+    notifyListeners();
     AsyncResult<List<RealEstateListItem>> asyncResultReResultsList;
     List<RealEstateListItem> currentReList = mainState.data;
 
@@ -38,8 +43,10 @@ class ReSearchResultsViewModel extends BaseViewModel {
         query: query,
       ),
     ]);
+
     try {
-      asyncResultReResultsList = results[0] as AsyncResult<List<RealEstateListItem>>;
+      asyncResultReResultsList =
+          results[0] as AsyncResult<List<RealEstateListItem>>;
     } catch (error) {
       throw Exception('$tag - Could not get search results data: $error');
     }
@@ -47,7 +54,8 @@ class ReSearchResultsViewModel extends BaseViewModel {
     if (asyncResultReResultsList.pagination.total == 0) {
       throw NoResultsException();
     }
-
+    notifyListeners();
+    flagModal = false;
     return AsyncResult(
       data: [...currentReList, ...asyncResultReResultsList.data],
       pagination: asyncResultReResultsList.pagination,
