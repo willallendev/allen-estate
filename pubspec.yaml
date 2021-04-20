@@ -38,7 +38,8 @@ dependencies:
   # Storage
   flutter_secure_storage: ^3.3.3
   # Widgets
-  mapbox_search: ^2.0.0
+  mapbox_search: any
+  mapbox_search_flutter: ^1.0.6+1
   map_launcher: ^0.12.0
   cached_network_image: ^2.2.0+1
   flutter_svg: ^0.18.0
@@ -51,6 +52,7 @@ dependencies:
   esys_flutter_share: ^1.0.2
   adobe_xd: ^1.0.0+1
   intl: ^0.16.1
+  flutter_signin_button: ^1.1.0
 
 dev_dependencies:
   flutter_test:

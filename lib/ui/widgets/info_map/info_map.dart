@@ -2,11 +2,13 @@ import 'dart:developer';
 
 import 'package:allenrealestateflutter/ui/widgets/animations/explicit_tween_animation_builder.dart';
 import 'package:allenrealestateflutter/ui/widgets/custom_network_image/custom_network_image.dart';
-import 'package:allenrealestateflutter/ui/widgets/info_map/config.secret.dart' as secret;
+import 'package:allenrealestateflutter/ui/widgets/info_map/config.secret.dart'
+    as secret;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:map_launcher/map_launcher.dart';
 import 'package:mapbox_search/mapbox_search.dart';
+import 'package:mapbox_search_flutter/mapbox_search_flutter.dart';
 
 // TODO: Cleanup/simplify code
 class InfoMap extends StatelessWidget {
@@ -14,7 +16,8 @@ class InfoMap extends StatelessWidget {
   final double lat;
   final double long;
   final int zoomLevel;
-  final MapBoxStaticImage staticImage = MapBoxStaticImage(apiKey: secret.apiKey);
+  // final MapBoxStaticImage staticImage =
+  //     MapBoxStaticImage(apiKey: secret.apiKey);
 
   InfoMap({this.lat, this.long, this.zoomLevel = 14});
 
@@ -63,28 +66,32 @@ class InfoMap extends StatelessWidget {
         duration: Duration(milliseconds: 450),
         tween: Tween<double>(begin: 0, end: 1),
         builder: (context, controller, animation) => GestureDetector(
-          onPanStart: (_) => controller.forward().catchError((e) => log(e, name: '$tag/onPanStart')),
-          onPanEnd: (_) => controller.reverse().catchError((e) => log(e, name: '$tag/onPanEnd')),
+          onPanStart: (_) => controller
+              .forward()
+              .catchError((e) => log(e, name: '$tag/onPanStart')),
+          onPanEnd: (_) => controller
+              .reverse()
+              .catchError((e) => log(e, name: '$tag/onPanEnd')),
           onTap: () => _launchMapApp(context),
           child: Stack(
             fit: StackFit.passthrough,
             children: [
-              CustomNetworkImage(
-                backgroundColor: Colors.black.withOpacity(.2),
-                imageUrl: staticImage.getStaticUrlWithMarker(
-                  center: Location(lat: lat, lng: long),
-                  marker: MapBoxMarker(
-                    markerColor: Color.hex('48A999'),
-                    markerLetter: 'o',
-                    markerSize: MarkerSize.SMALL,
-                  ),
-                  height: height.truncate(),
-                  width: height.truncate(),
-                  zoomLevel: zoomLevel ?? 14,
-                  style: MapBoxStyle.Streets,
-                  render2x: true,
-                ),
-              ),
+              // CustomNetworkImage(
+              //   backgroundColor: Colors.black.withOpacity(.2),
+              //   imageUrl: staticImage.getStaticUrlWithMarker(
+              //     center: Location(lat: lat, lng: long),
+              //     marker: MapBoxMarker(
+              //       //markerColor: Color.hex('48A999'),
+              //       markerLetter: 'o',
+              //       markerSize: MarkerSize.SMALL,
+              //     ),
+              //     height: height.truncate(),
+              //     width: height.truncate(),
+              //     zoomLevel: zoomLevel ?? 14,
+              //     style: MapBoxStyle.Streets,
+              //     render2x: true,
+              //   ),
+              // ),
               FadeTransition(
                 opacity: animation,
                 child: Container(
@@ -92,7 +99,8 @@ class InfoMap extends StatelessWidget {
                   color: textTheme.headline1.color.withOpacity(.4),
                   child: Text(
                     'Tap to open map app\n',
-                    style: textTheme.headline4.copyWith(color: theme.backgroundColor),
+                    style: textTheme.headline4
+                        .copyWith(color: theme.backgroundColor),
                   ),
                 ),
               )

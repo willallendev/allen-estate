@@ -15,25 +15,27 @@ class ReResultsListScreen extends StatelessWidget {
   final void Function() onFilter;
   final void Function() onEndReached;
   final void Function() onRetry;
+  final bool flagModal;
   final AsyncState state;
   final bool noMore;
   final List<RealEstateListItem> reList;
   final String title;
 
-  ReResultsListScreen({
-    this.onReTap,
-    this.onSearch,
-    this.onFilter,
-    this.onEndReached,
-    this.noMore,
-    this.reList,
-    this.title,
-    this.state,
-    this.onRetry,
-  });
+  ReResultsListScreen(
+      {this.onReTap,
+      this.onSearch,
+      this.onFilter,
+      this.onEndReached,
+      this.noMore,
+      this.reList,
+      this.title,
+      this.state,
+      this.onRetry,
+      this.flagModal});
 
   AsyncState _listifyAsyncState(AsyncState state) {
-    if (reList.length > 0 && (state == AsyncState.loading || state == AsyncState.error)) {
+    if (reList.length > 0 &&
+        (state == AsyncState.loading || state == AsyncState.error)) {
       return AsyncState.done;
     }
     return state;
@@ -46,7 +48,16 @@ class ReResultsListScreen extends StatelessWidget {
       create: (_) => BarsElevationViewModel(),
       builder: (context, _) => Scaffold(
         backgroundColor: theme.backgroundColor,
-        appBar: generateResultsSearchAppBar(
+        //either change to idlesearchAppBar or set to null so its just a loading
+        appBar:
+            // flagModal
+            //     ? generateIdleSearchAppBar(
+            //         context: context,
+            //         elevation:
+            //             context.watch<BarsElevationViewModel>().topAppBarElevation)
+            //     :
+            generateResultsSearchAppBar(
+          flag: flagModal,
           context: context,
           title: title,
           elevation: context.watch<BarsElevationViewModel>().topAppBarElevation,
@@ -57,7 +68,8 @@ class ReResultsListScreen extends StatelessWidget {
           onRetry: onRetry,
           state: _listifyAsyncState(state),
           builder: (context) => ReList(
-            controller: context.watch<BarsElevationViewModel>().scrollController,
+            controller:
+                context.watch<BarsElevationViewModel>().scrollController,
             realEstateList: reList,
             onTap: onReTap,
             onEndReached: onEndReached,

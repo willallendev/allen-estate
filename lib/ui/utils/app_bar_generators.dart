@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-AppBar generateIdleSearchAppBar({@required BuildContext context, Function onTap, double elevation}) {
+AppBar generateIdleSearchAppBar(
+    {@required BuildContext context, Function onTap, double elevation}) {
   final theme = Theme.of(context);
   final textTheme = theme.textTheme;
   final dimmedFontColor = textTheme.bodyText1.color;
@@ -18,7 +19,8 @@ AppBar generateIdleSearchAppBar({@required BuildContext context, Function onTap,
             children: <Widget>[
               Icon(Icons.search, color: dimmedFontColor),
               Container(width: 16),
-              Text('Search', style: textTheme.headline6.copyWith(color: dimmedFontColor)),
+              Text('Search',
+                  style: textTheme.headline6.copyWith(color: dimmedFontColor)),
             ],
           ),
         ),
@@ -28,7 +30,12 @@ AppBar generateIdleSearchAppBar({@required BuildContext context, Function onTap,
 }
 
 AppBar generateResultsSearchAppBar(
-    {@required BuildContext context, String title, Function onSearch, Function onFilter, double elevation}) {
+    {@required BuildContext context,
+    String title,
+    Function onSearch,
+    Function onFilter,
+    double elevation,
+    bool flag}) {
   final theme = Theme.of(context);
   final textTheme = theme.textTheme;
   final fontColor = textTheme.headline1.color;
@@ -54,14 +61,17 @@ AppBar generateResultsSearchAppBar(
       color: theme.backgroundColor,
       child: Container(
         height: 48,
-        child: InkWell(
-          onTap: onSearch,
-          child: Row(
-            children: <Widget>[
-              Text(title, style: textTheme.bodyText1.copyWith(color: fontColor)),
-            ],
-          ),
-        ),
+        child: flag
+            ? Container()
+            : InkWell(
+                onTap: onSearch,
+                child: Row(
+                  children: <Widget>[
+                    Text(title,
+                        style: textTheme.bodyText1.copyWith(color: fontColor)),
+                  ],
+                ),
+              ),
       ),
     ),
   );

@@ -20,9 +20,10 @@ class ReSearchResultsContainer extends StatelessWidget {
   });
 
   void _onSearch(BuildContext context) async {
-    String query = await showSearch<String>(context: context, delegate: ReSearchDelegate());
+    String query = await showSearch<String>(
+        context: context, delegate: ReSearchDelegate());
     if (query != null) {
-      ExtendedNavigator.of(context).push(
+      ExtendedNavigator.of(context).replace(
         Routes.reSearchResults,
         queryParams: {'query': query},
       );
@@ -35,7 +36,8 @@ class ReSearchResultsContainer extends StatelessWidget {
         Routes.reSingle(id: realEstate.id),
       );
     } else {
-      log('Error, corrupted item, item.id == null', name: '$tag/_onReCardNavigate');
+      log('Error, corrupted item, item.id == null',
+          name: '$tag/_onReCardNavigate');
     }
   }
 
@@ -46,13 +48,15 @@ class ReSearchResultsContainer extends StatelessWidget {
         model.query = query;
         model.init();
       },
-      builder: (BuildContext context, ReSearchResultsViewModel model, Widget child) {
+      builder:
+          (BuildContext context, ReSearchResultsViewModel model, Widget child) {
         PaginationData pagination = model.mainState.pagination;
         return ReResultsListScreen(
           title: query?.trim(),
           onSearch: () => _onSearch(context),
           noMore: pagination.currentPage == pagination.lastPage,
           reList: model.mainState.data,
+          flagModal: model.flagModal,
           onFilter: () => log('onFilter', name: tag),
           onEndReached: () => model.init(),
           onReTap: (realEstate) => _onReNavigate(context, realEstate),

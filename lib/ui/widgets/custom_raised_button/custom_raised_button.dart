@@ -48,7 +48,7 @@ class CustomRaisedButton extends StatelessWidget {
       constraints: effectiveConstraints,
       child: Theme(
         data: theme.copyWith(textTheme: _textTheme),
-        isMaterialAppTheme: true,
+        //isMaterialAppTheme: true,
         child: Material(
           type: MaterialType.button,
           clipBehavior: Clip.antiAlias,

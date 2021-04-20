@@ -13,7 +13,8 @@ class HomeContainer extends StatelessWidget {
   static const String tag = 'HomeContainer';
 
   void _onSearch(BuildContext context) async {
-    String query = await showSearch<String>(context: context, delegate: ReSearchDelegate());
+    String query = await showSearch<String>(
+        context: context, delegate: ReSearchDelegate());
     if (query != null) {
       ExtendedNavigator.of(context).push(
         Routes.reSearchResults,
@@ -28,15 +29,19 @@ class HomeContainer extends StatelessWidget {
         Routes.reSingle(id: realEstate.id),
       );
     } else {
-      log('Error, corrupted item, item.id == null', name: '$tag/_onReCardNavigate');
+      log('Error, corrupted item, item.id == null',
+          name: '$tag/_onReCardNavigate');
     }
   }
 
-  void _onReCategoryCardNavigate(BuildContext context, RealEstateCategory category) {
+  void _onReCategoryCardNavigate(
+      BuildContext context, RealEstateCategory category) {
     if (category?.id != null) {
-      ExtendedNavigator.of(context).push(Routes.reCategory(categoryId: category.id));
+      ExtendedNavigator.of(context)
+          .push(Routes.reCategory(categoryId: category.id));
     } else {
-      log('Error, corrupted item, item.id == null', name: '$tag/_onReCategoryCardNavigate');
+      log('Error, corrupted item, item.id == null',
+          name: '$tag/_onReCategoryCardNavigate');
     }
   }
 
@@ -58,10 +63,13 @@ class HomeContainer extends StatelessWidget {
           onRetry: model.init,
           onSearch: () => _onSearch(context),
           onReCardTap: (realEstate) => _onReCardNavigate(context, realEstate),
-          onReCategoryCardTap: (category) => _onReCategoryCardNavigate(context, category),
+          onReCategoryCardTap: (category) =>
+              _onReCategoryCardNavigate(context, category),
           onPopularTap: () => _onPopularNavigate(context),
-          onNavigateToWhereToFindUs: () => ExtendedNavigator.of(context).replace(Routes.whereToFindUs),
-          onNavigateToAboutUs: () => ExtendedNavigator.of(context).replace(Routes.aboutUs),
+          onNavigateToWhereToFindUs: () =>
+              ExtendedNavigator.of(context).replace(Routes.whereToFindUs),
+          onNavigateToAboutUs: () =>
+              ExtendedNavigator.of(context).replace(Routes.aboutUs),
         );
       },
     );
