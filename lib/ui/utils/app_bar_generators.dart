@@ -61,17 +61,15 @@ AppBar generateResultsSearchAppBar(
       color: theme.backgroundColor,
       child: Container(
         height: 48,
-        child: flag
-            ? Container()
-            : InkWell(
-                onTap: onSearch,
-                child: Row(
-                  children: <Widget>[
-                    Text(title,
-                        style: textTheme.bodyText1.copyWith(color: fontColor)),
-                  ],
-                ),
-              ),
+        child: InkWell(
+          onTap: onSearch,
+          child: Row(
+            children: <Widget>[
+              Text(title,
+                  style: textTheme.bodyText1.copyWith(color: fontColor)),
+            ],
+          ),
+        ),
       ),
     ),
   );

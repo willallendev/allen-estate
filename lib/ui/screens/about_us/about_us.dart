@@ -11,12 +11,12 @@ class AboutUsScreen extends StatelessWidget {
   final void Function() onNavigateToHome;
   final void Function() onNavigateToWhereToFindUs;
 
-  final String _fullName = 'William Allen';
+  final String _fullName = 'Juan Rodriguez';
   final String _title = 'Software Developer';
-  final String _email = 'allenwilliamdev@gmail.com';
+  final String _email = 'juanluis2116@gmail.com';
   final String _profile =
-      'Passionate and experienced software developer with great enthusiasm for UI/UX. Adept to software architecture and design patterns for more testable and maintainable code. With experience working as part of, and leading, small teams with members of different areas of specialties.';
-  final String _address = 'Venezuela';
+      "Recent collegue graduate with experience in mobile development based on an intership and my own personal project. Looking to learn more about mobile developement and become a senior mobile developer. I enjoy using Flutter and learning more languages that will help me reach my goal";
+  final String _address = 'Fullerton, CA';
 
   AboutUsScreen({this.onNavigateToHome, this.onNavigateToWhereToFindUs});
 
@@ -91,7 +91,7 @@ class AboutUsScreen extends StatelessWidget {
                         ),
                         child: CustomNetworkImage(
                           imageUrl:
-                              'https://pbs.twimg.com/profile_images/1167461348684566530/p8mse0BI_400x400.jpg',
+                              'https://scontent-lax3-2.cdninstagram.com/v/t51.2885-19/s320x320/128945003_1015840748896315_1568857006724118005_n.jpg?tp=1&_nc_ht=scontent-lax3-2.cdninstagram.com&_nc_ohc=Gje0ApOuBh0AX9jz909&edm=ABfd0MgAAAAA&ccb=7-4&oh=3e4a81cead9d64cf7dc491fa8b3a36cf&oe=60A90143&_nc_sid=7bff83',
                           backgroundColor: Colors.grey,
                           fit: BoxFit.cover,
                         ),
@@ -166,7 +166,7 @@ class AboutUsScreen extends StatelessWidget {
                                 color: Colors.teal,
                               ),
                               ProfileDetail(
-                                  title: Text("Venezuela"),
+                                  title: Text("Fullerton, CA"),
                                   icon: Icon(Icons.location_city)),
                               Divider(
                                 color: Colors.teal,
@@ -177,7 +177,8 @@ class AboutUsScreen extends StatelessWidget {
                                   SignInButton(
                                     Buttons.LinkedIn,
                                     onPressed: () {
-                                      String url = 'https://linkedin.com';
+                                      String url =
+                                          'https://www.linkedin.com/in/juan-rodriguez-713525162/';
                                       launchURL(url);
                                     },
                                     mini: true,

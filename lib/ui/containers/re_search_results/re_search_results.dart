@@ -9,6 +9,7 @@ import 'package:allenrealestateflutter/ui/settings/router/router.gr.dart';
 import 'package:allenrealestateflutter/ui/utils/re_search_delegate.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_route/auto_route_annotations.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class ReSearchResultsContainer extends StatelessWidget {
@@ -19,7 +20,7 @@ class ReSearchResultsContainer extends StatelessWidget {
     @required @QueryParam() this.query,
   });
 
-  void _onSearch(BuildContext context) async {
+  void _onSearch(BuildContext context, bool flag) async {
     String query = await showSearch<String>(
         context: context, delegate: ReSearchDelegate());
     if (query != null) {
@@ -45,15 +46,19 @@ class ReSearchResultsContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseContainer<ReSearchResultsViewModel>(
       onModelReady: (ReSearchResultsViewModel model) {
+        //THIS FLAG CANCELS THE CALL
+        //NEED TO FIGURE OUT HOW TO GO BACK TO LAST INIT
+        model.loadToken = model.flagModal ? true : false;
         model.query = query;
         model.init();
       },
       builder:
           (BuildContext context, ReSearchResultsViewModel model, Widget child) {
         PaginationData pagination = model.mainState.pagination;
+
         return ReResultsListScreen(
           title: query?.trim(),
-          onSearch: () => _onSearch(context),
+          onSearch: () => _onSearch(context, model.flagModal),
           noMore: pagination.currentPage == pagination.lastPage,
           reList: model.mainState.data,
           flagModal: model.flagModal,

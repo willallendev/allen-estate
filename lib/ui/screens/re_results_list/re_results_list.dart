@@ -4,6 +4,7 @@ import 'package:allenrealestateflutter/ui/utils/app_bar_generators.dart';
 import 'package:allenrealestateflutter/ui/view_models/bars_elevation_view_model/bars_elevation_view_model.dart';
 import 'package:allenrealestateflutter/ui/widgets/async_state_manager/async_state_manager.dart';
 import 'package:allenrealestateflutter/ui/widgets/lists/re_list/re_list.dart';
+import 'package:dio/src/cancel_token.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -48,15 +49,7 @@ class ReResultsListScreen extends StatelessWidget {
       create: (_) => BarsElevationViewModel(),
       builder: (context, _) => Scaffold(
         backgroundColor: theme.backgroundColor,
-        //either change to idlesearchAppBar or set to null so its just a loading
-        appBar:
-            // flagModal
-            //     ? generateIdleSearchAppBar(
-            //         context: context,
-            //         elevation:
-            //             context.watch<BarsElevationViewModel>().topAppBarElevation)
-            //     :
-            generateResultsSearchAppBar(
+        appBar: generateResultsSearchAppBar(
           flag: flagModal,
           context: context,
           title: title,
